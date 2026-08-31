@@ -2,8 +2,6 @@
 
 set -ouex pipefail
 
-rm -f /etc/dconf/db/distro.d/02-bluefin-keybindings
-
 # Copy the contents of system_files/ of the git repo to /
 cp -avf "/ctx/system_files"/. /
 
@@ -16,7 +14,7 @@ cp -avf "/ctx/system_files"/. /
 
 # this installs a package from fedora repos
 dnf5 install -y firefox firefox-langpacks 
-dnf5 remove -y gnome-software-rpm-ostree
+#dnf5 remove -y gnome-software-rpm-ostree
 
 # Use a COPR Example:
 #
@@ -36,22 +34,6 @@ find /usr/share/gnome-shell/extensions -type d -name schemas \
     -exec glib-compile-schemas {} \;
     
     
-# Install homebrew
-# Copy Homebrew files from the brew image
-# And enable
-COPY --from=ghcr.io/ublue-os/brew:latest /system_files /
-RUN --mount=type=cache,dst=/var/cache \
-    --mount=type=cache,dst=/var/log \
-    --mount=type=tmpfs,dst=/tmp \
-    /usr/bin/systemctl preset brew-setup.service && \
-    /usr/bin/systemctl preset brew-update.timer && \
-    /usr/bin/systemctl preset brew-upgrade.timer
-    
-    
-# source https://github.com/ublue-os/brew/pkgs/container/brew
-
-
-
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
