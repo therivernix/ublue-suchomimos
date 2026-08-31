@@ -35,6 +35,9 @@ dnf5 remove -y \
 #
 # dnf5 -y copr disable ublue-os/staging
 
+### Install Homebrew applications
+brew tap --trust ublue-os/tap
+brew install --cask 1password-gui-linux
 
 ### Removing built-in GNOME Shell extensions
 
