@@ -19,13 +19,12 @@ dnf5 install -y \
     firefox \
     firefox-langpacks
 
-
-### Remove GNOME Software
-
-# Remove the GNOME Software application from the image.
+# Disable RPM-OSTree package management support in GNOME Software
+#
+# This is the same approach used by Universal Blue for Silverblue-based
+# images. Since this image is based on silverblue-main, remove it directly.
 dnf5 remove -y \
-    gnome-software
-
+    gnome-software-rpm-ostree
 
 # Use a COPR example:
 #
@@ -35,21 +34,6 @@ dnf5 remove -y \
 # Disable COPRs so they don't end up enabled on the final image:
 #
 # dnf5 -y copr disable ublue-os/staging
-
-
-### Install Homebrew applications
-
-# Homebrew is installed by the UBlue brew image.
-# Make brew available during the image build.
-export PATH="/var/home/linuxbrew/.linuxbrew/bin:/var/home/linuxbrew/.linuxbrew/sbin:${PATH}"
-
-# Verify Homebrew is available
-command -v brew
-brew --version
-
-# Add the UBlue tap and install 1Password
-brew tap --trust ublue-os/tap
-brew install --cask 1password-gui-linux
 
 
 ### Removing built-in GNOME Shell extensions
@@ -66,6 +50,6 @@ find /usr/share/gnome-shell/extensions -type d -name schemas \
     -exec glib-compile-schemas {} \;
 
 
-### Enable System Unit File
+### Example for enabling a System Unit File
 
 systemctl enable podman.socket
