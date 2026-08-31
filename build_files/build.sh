@@ -24,7 +24,7 @@ dnf5 install -y \
 # This is the same approach used by Universal Blue for Silverblue-based
 # images. Since this image is based on silverblue-main, remove it directly.
 dnf5 remove -y \
-    gnome-software-rpm-ostree
+    gnome-software
 
 # Use a COPR example:
 #
