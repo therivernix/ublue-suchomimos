@@ -16,7 +16,7 @@ cp -avf "/ctx/system_files"/. /
 
 # this installs a package from fedora repos
 dnf5 install -y firefox firefox-langpacks 
-#gnome-software-rpm-ostree
+dnf5 remove -y gnome-software-rpm-ostree
 
 # Use a COPR Example:
 #
