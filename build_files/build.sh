@@ -14,7 +14,12 @@ cp -avf "/ctx/system_files"/. /
 
 # this installs a package from fedora repos
 dnf5 install -y firefox firefox-langpacks 
-#dnf5 remove -y gnome-software-rpm-ostree
+
+# Disable DKMS support in gnome-software
+if [[ "$IMAGE_NAME" == "silverblue" ]]; then
+    dnf5 remove -y \
+        gnome-software-rpm-ostree
+fi
 
 # Use a COPR Example:
 #
