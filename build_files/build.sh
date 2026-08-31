@@ -26,14 +26,14 @@ dnf5 install -y firefox firefox-langpacks
 # dnf5 -y copr disable ublue-os/staging
 
 # Removing built-in extensions
-rm -rf /usr/share/gnome-shell/extensions/search-light@icedman.github.com
 rm -rf /usr/share/gnome-shell/extensions/apps-menu@gnome-shell-extensions.gcampax.github.com
 rm -rf /usr/share/gnome-shell/extensions/launch-new-instance@gnome-shell-extensions.gcampax.github.com
 rm -rf /usr/share/gnome-shell/extensions/places-menu@gnome-shell-extensions.gcampax.github.com
 rm -rf /usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com
-rm -rf /usr/share/gnome-shell/extensions/logomenu@aryan_k
-rm -rf /usr/share/gnome-shell/extensions/tiling-assistant@leleat-on-github
-rm -rf /usr/share/gnome-shell/extensions/blur-my-shell@aunetx
+
+# Compile GSettings schemas for GNOME extensions
+find /usr/share/gnome-shell/extensions -type d -name schemas \
+    -exec glib-compile-schemas {} \;
 
 #### Example for enabling a System Unit File
 
