@@ -1,0 +1,275 @@
+# Default Flatpak applications
+# These will be installed on first boot
+# Format: INI file with [Flatpak Preinstall NAME] groups
+
+[Flatpak Preinstall app.drey.EarTag]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall be.alexandervanhee.gradia]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall ca.desrt.dconf-editor]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall cafe.avery.Delfin]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.brave.Browser]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.fastmail.Fastmail]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.github.PintaProject.Pinta]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.github.tchx84.Flatseal]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.github.xournalpp.xournalpp]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.mattjakeman.ExtensionManager]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.obsproject.Studio]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.ranfdev.DistroShelf]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.somaxa8.earx]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.synology.SynologyDrive]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.vixalien.sticky]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.vscodium.codium]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall com.yubico.yubioath]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall de.leopoldluley.Clapgrep]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall de.swsnr.turnon]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall fr.handbrake.ghb]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall io.github.ans_ibrahim.Memento]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall io.github.flattool.Ignition]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall io.github.flattool.Warehouse]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall io.github.kolunmi.Bazaar]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall io.github.maniacx.BudsLink]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall io.github.plrigaux.sysd-manager]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall io.github.screwys.Rufin]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall io.github.tobagin.keysmith]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall io.github.victoralvesf.aonsoku]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall io.github.vikdevelop.SaveDesktop]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall io.gitlab.adhami3310.Impression]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall io.missioncenter.MissionCenter]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall it.dottorblaster.cauldron]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall it.mijorus.gearlever]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall it.mijorus.smile]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall md.obsidian.Obsidian]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall nl.andreasknoben.Laser]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.fedoraproject.MediaWriter]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.filezillaproject.Filezilla]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gaphor.Gaphor]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.Calculator]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.Decibels]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.Epiphany]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.FileRoller]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.Firmware]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.Logs]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.Loupe]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.NautilusPreviewer]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.Papers]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.PowerStats]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.Showtime]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.SimpleScan]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.Snapshot]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.SoundRecorder]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.TextEditor]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.World.PikaBackup]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.baobab]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.gnome.clocks]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.kde.kdenlive]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.keepassxc.KeePassXC]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.libreoffice.LibreOffice]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.nickvision.tubeconverter]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.remmina.Remmina]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.signal.Signal]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall page.codeberg.libre_menu_editor.LibreMenuEditor]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall page.tesk.Refine]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall org.pulseaudio.pavucontrol]
+Branch=stable
+IsRuntime=false
+
+[Flatpak Preinstall dev.mufeed.Wordbook]
+Branch=stable
+IsRuntime=false

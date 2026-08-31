@@ -1,0 +1,598 @@
+[BudsLink-Companion]
+circle-widget-custom-colors=['#ff7800', '#ff7800', '#15c931', '#15c931', '#15c931', '#15c931', '#15c931', '#15c931', '#15c931', '#15c931']
+enable-battery-indicator-text=true
+enable-multi-indicator-mode=false
+indicator-type=0
+level-indicator-color=1
+level-indicator-custom-colors=['#ff7800', '#ff7800', '#15c931', '#15c931', '#15c931', '#15c931', '#15c931', '#15c931', '#15c931', '#15c931']
+level-indicator-type=0
+
+[Logo-menu]
+hide-forcequit=true
+menu-button-extensions-app='com.mattjakeman.ExtensionManager.desktop'
+menu-button-icon-image=30
+menu-button-icon-size=20
+menu-button-software-center='/usr/bin/flatpak run io.github.kolunmi.Bazaar'
+menu-button-system-monitor='/usr/bin/missioncenter-helper'
+menu-button-terminal='xdg-terminal-exec'
+show-activities-button=true
+show-distroshelf=true
+show-gamemode=false
+show-lockscreen=false
+show-power-option=false
+symbolic-icon=true
+
+[advanced-alt-tab-window-switcher]
+animation-time-factor=100
+enable-super=true
+hot-edge-mode=1
+hot-edge-position=1
+show-dash=1
+super-double-press-action=3
+super-key-mode=3
+switcher-popup-theme=3
+switcher-popup-up-down-action=4
+switcher-ws-thumbnails=1
+
+[alphabetical-app-grid]
+folder-order-position='end'
+
+[appindicator]
+compact-mode-enabled=false
+custom-icons=@a(sss) []
+icon-brightness=0.0
+icon-contrast=0.0
+icon-opacity=240
+icon-saturation=0.0
+icon-size=0
+legacy-tray-enabled=false
+tray-pos='right'
+
+[blur-my-shell]
+rounded-blur-found=true
+settings-version=2
+
+[blur-my-shell/appfolder]
+blur=false
+
+[blur-my-shell/applications]
+pipeline='pipeline_default'
+
+[blur-my-shell/coverflow-alt-tab]
+pipeline='pipeline_default'
+
+[blur-my-shell/dash-to-dock]
+blur=false
+pipeline='pipeline_default_rounded'
+
+[blur-my-shell/lockscreen]
+pipeline='pipeline_default'
+
+[blur-my-shell/overview]
+pipeline='pipeline_default'
+
+[blur-my-shell/panel]
+blur=false
+brightness=0.80000000000000004
+force-light-text=true
+override-background=true
+pipeline='pipeline_default'
+sigma=1
+static-blur=false
+style-panel=0
+
+[blur-my-shell/popup]
+blur=false
+pipeline='pipeline_default_rounded'
+static-blur=true
+style-popup=3
+
+[blur-my-shell/screenshot]
+pipeline='pipeline_default'
+
+[bottom-dash-panel]
+accent-color=true
+auto-hide=false
+hide-top-panel=false
+overlap-windows=true
+panel-mode=false
+toggle-panel=true
+
+[caffeine]
+cli-toggle=false
+indicator-position-max=2
+user-enabled=true
+
+[clipboard-indicator]
+blink-icon-on-copy=false
+clear-history-interval=1440
+clear-history-on-interval=true
+clear-on-boot=true
+disable-down-arrow=true
+display-mode=0
+excluded-apps=['1password']
+next-history-clear=1788129705
+open-at-cursor=true
+paste-on-select=true
+strip-text=true
+toggle-menu=['<Super>v']
+
+[custom-command-list]
+command-order=[7, 26, 6, 19, 34, 33, 30, 31, 32, 17, 12, 14, 2, 3, 4, 5, 15, 11, 28, 10, 1, 8, 9, 29, 21, 22, 23, 13, 16, 18, 24, 25, 27, 20, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+command1=('---', '', '', true)
+command10=('Extensions', '/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=extension-manager --file-forwarding com.mattjakeman.ExtensionManager @@u %U @@', 'application-x-addon-symbolic', true)
+command11=('---', '', '', true)
+command12=('---', '', '', true)
+command13=('---', '', '', true)
+command14=('Settings', 'gnome-control-center', 'org.gnome.Settings-symbolic', true)
+command15=('Keyboard', 'gnome-control-center keyboard', 'input-keyboard-symbolic', true)
+command16=('Battery Controls', 'ptyxis -- ujust spino-battery-management', 'battery-level-100-charged-symbolic', false)
+command17=('Trash', 'nautilus trash://', 'user-trash-symbolic', true)
+command18=('Fan Controls', 'ptyxis -- ujust spino-fancontrol', 'weather-windy-symbolic', false)
+command19=('Synology Drive', 'nautilus ~/SynologyDrive', 'folder-remote-symbolic', false)
+command2=('About', 'gnome-control-center system about', 'help-about-symbolic', false)
+command20=('Customize Menu', 'gnome-extensions prefs custom-command-list@storageb.github.com', 'open-menu-symbolic', true)
+command21=('---', '', '', true)
+command22=('Toggle TPM Unlock', 'ptyxis -- ujust toggle-tpm2', 'changes-prevent-symbolic', false)
+command23=('Manage Passphrases', 'ptyxis -- ujust spino-manage-luks-passphrases', 'dialog-password-symbolic', false)
+command24=('---', '', '', true)
+command25=('Reboot into UEFI', 'ptyxis -- /usr/share/ublue-os-spinosauros/rebootIntoFirmware.sh', 'system-reboot-symbolic', false)
+command26=('---', '', '', false)
+command27=('---', '', '', true)
+command28=('Configuration Scripts', 'ptyxis -- ujust --choose', 'utilities-terminal-symbolic', true)
+command29=('Rebase and Pin Update', 'ptyxis -- /usr/bin/ujust spino-rebase', 'view-pin-symbolic', true)
+command3=('Appearance', 'gnome-control-center background', 'preferences-desktop-appearance-symbolic', true)
+command30=('Recent', 'nautilus recent://', 'document-open-recent-symbolic', true)
+command31=('Starred', 'nautilus starred://', 'starred-symbolic', true)
+command32=('Network', 'nautilus network://', 'network-server-symbolic', false)
+command33=('Home', 'nautilus', 'go-home-symbolic', false)
+command34=('---', '', '', true)
+command35=('', '', '', true)
+command36=('', '', '', true)
+command37=('', '', '', true)
+command38=('', '', '', true)
+command39=('', '', '', true)
+command4=('Displays', 'gnome-control-center display', 'video-display-symbolic', true)
+command40=('', '', '', true)
+command41=('', '', '', true)
+command42=('', '', '', true)
+command43=('', '', '', true)
+command44=('', '', '', true)
+command45=('', '', '', true)
+command46=('', '', '', true)
+command47=('', '', '', true)
+command48=('', '', '', true)
+command49=('', '', '', true)
+command5=('Sound', 'gnome-control-center sound', 'audio-x-generic-symbolic', false)
+command50=('', '', '', true)
+command51=('', '', '', true)
+command52=('', '', '', true)
+command53=('', '', '', true)
+command54=('', '', '', true)
+command55=('', '', '', true)
+command56=('', '', '', true)
+command57=('', '', '', true)
+command58=('', '', '', true)
+command59=('', '', '', true)
+command6=('Downloads', 'nautilus ~/Downloads', 'folder-download-symbolic', true)
+command60=('', '', '', true)
+command61=('', '', '', true)
+command62=('', '', '', true)
+command63=('', '', '', true)
+command64=('', '', '', true)
+command65=('', '', '', true)
+command66=('', '', '', true)
+command67=('', '', '', true)
+command68=('', '', '', true)
+command69=('', '', '', true)
+command7=('Activities Overview', 'dbus-send --session --dest=org.gnome.Shell --type=method_call /org/gnome/Shell org.freedesktop.DBus.Properties.Set string:org.gnome.Shell string:OverviewActive variant:boolean:true', 'focus-windows-symbolic', false)
+command70=('', '', '', true)
+command71=('', '', '', true)
+command72=('', '', '', true)
+command73=('', '', '', true)
+command74=('', '', '', true)
+command75=('', '', '', true)
+command76=('', '', '', true)
+command77=('', '', '', true)
+command78=('', '', '', true)
+command79=('', '', '', true)
+command8=('Software Update', 'ptyxis -- /usr/bin/ujust update', 'software-update-available-symbolic', true)
+command80=('', '', '', true)
+command81=('', '', '', true)
+command82=('', '', '', true)
+command83=('', '', '', true)
+command84=('', '', '', true)
+command85=('', '', '', true)
+command86=('', '', '', true)
+command87=('', '', '', true)
+command88=('', '', '', true)
+command89=('', '', '', true)
+command9=('Firmware Update', 'ptyxis -- /usr/bin/ujust spino-update-firmware', 'application-x-firmware-symbolic', true)
+command90=('', '', '', true)
+command91=('', '', '', true)
+command92=('', '', '', true)
+command93=('', '', '', true)
+command94=('', '', '', true)
+command95=('', '', '', true)
+command96=('', '', '', true)
+command97=('', '', '', true)
+command98=('', '', '', true)
+command99=('', '', '', true)
+menuicon-setting='ublue-logo'
+menulocation-setting=1
+menuoptions-setting=2
+menuposition-setting=0
+menutitle-setting='Commands'
+
+[custom-command-toggle]
+buttonclick1-setting=2
+checkcommandsync1-setting=false
+checkexitcode1-setting=false
+closemenu1-setting=true
+entryrow1-setting='gnome-control-center system about'
+entryrow2-setting=''
+entryrow3-setting='About'
+entryrow4-setting='help-about-symbolic'
+force-refresh=true
+initialtogglestate1-setting=1
+numbuttons-setting=2
+showindicator1-setting=false
+togglestate1-setting=false
+togglestate2-setting=false
+
+[dash-to-dock]
+always-center-icons=true
+animation-time=0.15000000000000002
+apply-custom-theme=false
+autohide=true
+autohide-in-fullscreen=true
+background-color='rgb(0,0,0)'
+background-opacity=0.0
+click-action='previews'
+custom-background-color=true
+custom-theme-shrink=false
+customize-alphas=true
+dash-max-icon-size=32
+disable-overview-on-startup=true
+dock-fixed=false
+dock-position='BOTTOM'
+extend-height=false
+height-fraction=0.90000000000000002
+hide-delay=0.10000000000000002
+hot-keys=false
+hotkeys-overlay=true
+hotkeys-show-dock=true
+icon-size-fixed=true
+intellihide=true
+intellihide-mode='FOCUS_APPLICATION_WINDOWS'
+max-alpha=0.80000000000000004
+middle-click-action='launch'
+min-alpha=0.29999999999999999
+multi-monitor=true
+preferred-monitor=-2
+preferred-monitor-by-connector='eDP-1'
+pressure-threshold=50.0
+preview-size-scale=0.14999999999999999
+require-pressure-to-show=false
+running-indicator-style='DOTS'
+shift-click-action='minimize'
+shift-middle-click-action='launch'
+shortcut=['<Super>r']
+shortcut-text='<Super>r'
+shortcut-timeout=2.0
+show-apps-always-in-the-edge=true
+show-apps-at-top=false
+show-delay=0.10000000000000002
+transparency-mode='DEFAULT'
+
+[dash-to-panel]
+animate-appicon-hover=false
+animate-appicon-hover-animation-extent={'RIPPLE': 4, 'PLANK': 4, 'SIMPLE': 1}
+appicon-margin=8
+appicon-padding=8
+appicon-style='NORMAL'
+context-menu-entries='[{"title":"Terminal","cmd":"TERMINALSETTINGS"},{"title":"System monitor","cmd":"flatpak run io.missioncenter.MissionCenter"},{"title":"Files","cmd":"nautilus"},{"title":"Extensions","cmd":"gnome-extensions-app"}]'
+dot-position='BOTTOM'
+dot-style-focused='DOTS'
+dot-style-unfocused='DOTS'
+extension-version=73
+focus-highlight=false
+group-apps=true
+hotkeys-overlay-combo='TEMPORARILY'
+panel-anchors='{"BOE-0x00000000":"MIDDLE"}'
+panel-element-positions='{"BOE-0x00000000":[{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":false,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"centerMonitor"},{"element":"centerBox","visible":false,"position":"stackedTL"},{"element":"rightBox","visible":false,"position":"stackedBR"},{"element":"dateMenu","visible":false,"position":"stackedBR"},{"element":"systemMenu","visible":false,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"},{"element":"showAppsButton","visible":true,"position":"stackedBR"}]}'
+panel-lengths='{"BOE-0x00000000":100}'
+panel-positions='{"BOE-0x00000000":"BOTTOM"}'
+panel-side-margins=0
+panel-side-padding=4
+panel-sizes='{"BOE-0x00000000":48}'
+panel-top-bottom-margins=0
+panel-top-bottom-padding=0
+prefs-opened=false
+show-apps-icon-file=''
+stockgs-keep-dash=false
+stockgs-keep-top-panel=true
+trans-use-border=false
+trans-use-custom-bg=false
+trans-use-custom-gradient=false
+trans-use-custom-opacity=true
+window-preview-title-position='TOP'
+
+[dash2dock-lite]
+animation-magnify=0.0
+animation-rise=0.25
+animation-spread=0.75
+blur-background=false
+downloads-icon=true
+edge-distance=0.41860465116279078
+mounted-icon=true
+overview-transparent-background=false
+trash-icon=true
+
+[ding]
+arrangeorder='KIND'
+check-x11wayland=true
+keep-arranged=true
+keep-stacked=false
+show-home=false
+show-trash=false
+sort-special-folders=true
+start-corner='top-right'
+unstackedtypes=@as []
+
+[gradia-companion]
+tool-settings={'freehand': ('#000000', 3.0), 'rectangle': ('#44cc44', 3.0), 'solid-rectangle': ('#000000', 3.0), 'highlighter': ('#ffdd00', 4.0), 'arrow': ('#000000', 3.0), 'stamp': ('#000000', 3.0), 'select': ('#000000', 4.0)}
+
+[gsconnect]
+enabled=true
+keep-alive-when-locked=true
+missing-openssl=false
+name='bluefin'
+
+[gsconnect/preferences]
+window-maximized=false
+window-size=(640, 550)
+
+[hotedge]
+edge-size=uint32 100
+fallback-in-use=false
+pressure-threshold=uint32 200
+show-animation=false
+
+[just-perfection]
+accent-color-icon=false
+activities-button=true
+animation=1
+dash-app-running=false
+events-button=false
+panel=true
+panel-in-overview=false
+support-notifier-showed-version=36
+support-notifier-type=0
+top-panel-position=0
+window-demands-attention-focus=true
+window-picker-icon=true
+window-preview-caption=false
+workspace=true
+
+[libpanel]
+alignment='right'
+layout=[['gnome@main', 'quick-settings-audio-panel@rayzeq.github.io/main']]
+single-column=false
+
+[lightning-launcher]
+shortcut-key=['<Super>space']
+
+[nightthemeswitcher/time]
+location=(50.900727669070911, 5.4187500000000002)
+manual-schedule=true
+nightthemeswitcher-ondemand-keybinding=['<Shift><Super>t']
+sunrise=7.0
+sunset=20.0
+
+[o-tiling]
+active-hint-overlay-enabled=false
+cleared-system-bindings='{}'
+gap-inner=uint32 2
+gap-outer=uint32 2
+hide-panel-icon=true
+panel-transparency=true
+panel-transparency-opacity=uint32 50
+quick-settings-toggle=true
+show-overview-button-in-indicator=false
+skip-overview=false
+theme-consistency-style='default'
+window-animation-style='default'
+workspace-animation-style='none'
+workspace-number-indicator=true
+workspace-switcher-style=true
+
+[quick-settings-audio-panel]
+add-button-applications-output-reset-to-default=true
+always-show-input-volume-slider=false
+create-applications-volume-sliders=true
+create-balance-slider=false
+create-mpris-controllers=true
+create-perdevice-volume-sliders=false
+create-profile-switcher=false
+group-applications-volume-sliders=false
+master-volume-sliders-show-current-device=false
+merged-panel-position='top'
+move-input-volume-slider=true
+move-output-volume-slider=true
+mpris-controllers-are-moved=true
+panel-type='independent-panel'
+perdevice-volume-sliders-change-menu=true
+profiles-renames={'Radeon High Definition Audio Controller': {'off': ('Off', 'Off'), 'pro-audio': ('Pro Audio', 'Pro Audio'), 'HiFi': ('Play HiFi quality Music', 'Play HiFi quality Music'), 'output:hdmi-surround71-extra3': ('Digital Surround 7.1 (HDMI 4) Output', 'Digital Surround 7.1 (HDMI 4) Output'), 'output:hdmi-surround-extra3': ('Digital Surround 5.1 (HDMI 4) Output', 'Digital Surround 5.1 (HDMI 4) Output'), 'output:hdmi-surround71-extra2': ('Digital Surround 7.1 (HDMI 3) Output', 'Digital Surround 7.1 (HDMI 3) Output'), 'output:hdmi-surround-extra2': ('Digital Surround 5.1 (HDMI 3) Output', 'Digital Surround 5.1 (HDMI 3) Output'), 'output:hdmi-surround71-extra1': ('Digital Surround 7.1 (HDMI 2) Output', 'Digital Surround 7.1 (HDMI 2) Output'), 'output:hdmi-surround-extra1': ('Digital Surround 5.1 (HDMI 2) Output', 'Digital Surround 5.1 (HDMI 2) Output'), 'output:hdmi-surround71': ('Digital Surround 7.1 (HDMI) Output', 'Digital Surround 7.1 (HDMI) Output'), 'output:hdmi-surround': ('Digital Surround 5.1 (HDMI) Output', 'Digital Surround 5.1 (HDMI) Output'), 'output:hdmi-stereo-extra3': ('Digital Stereo (HDMI 4) Output', 'Digital Stereo (HDMI 4) Output'), 'output:hdmi-stereo-extra2': ('Digital Stereo (HDMI 3) Output', 'Digital Stereo (HDMI 3) Output'), 'output:hdmi-stereo-extra1': ('Digital Stereo (HDMI 2) Output', 'Digital Stereo (HDMI 2) Output'), 'output:hdmi-stereo': ('Digital Stereo (HDMI) Output', 'Digital Stereo (HDMI) Output')}, 'Ryzen HD Audio Controller': {'off': ('Off', 'Off'), 'pro-audio': ('Pro Audio', 'Pro Audio'), 'HiFi (Mic1, Mic2, Speaker)': ('Play HiFi quality Music (Mic1, Mic2, Speaker)', 'Play HiFi quality Music (Mic1, Mic2, Speaker)'), 'HiFi (Headphones, Mic1, Mic2)': ('Play HiFi quality Music (Headphones, Mic1, Mic2)', 'Play HiFi quality Music (Headphones, Mic1, Mic2)'), 'HiFi (Headset, Mic1, Speaker)': ('Play HiFi quality Music (Headset, Mic1, Speaker)', 'Play HiFi quality Music (Headset, Mic1, Speaker)'), 'HiFi (Headphones, Headset, Mic1)': ('Play HiFi quality Music (Headphones, Headset, Mic1)', 'Play HiFi quality Music (Headphones, Headset, Mic1)'), 'input:analog-stereo': ('Analog Stereo Input', 'Analog Stereo Input'), 'output:analog-surround-40': ('Analog Surround 4.0 Output', 'Analog Surround 4.0 Output'), 'output:analog-surround-40+input:analog-stereo': ('Analog Surround 4.0 Output + Analog Stereo Input', 'Analog Surround 4.0 Output + Analog Stereo Input'), 'output:analog-stereo': ('Analog Stereo Output', 'Analog Stereo Output'), 'output:analog-stereo+input:analog-stereo': ('Analog Stereo Duplex', 'Analog Stereo Duplex')}, 'Studio Display': {'off': ('Off', 'Off'), 'input:mono-fallback': ('Mono Input', 'Mono Input'), 'pro-audio': ('Pro Audio', 'Pro Audio'), 'output:iec958-stereo': ('Digital Stereo (IEC958) Output', 'Digital Stereo (IEC958) Output'), 'output:iec958-stereo+input:mono-fallback': ('Digital Stereo (IEC958) Output + Mono Input', 'Digital Stereo (IEC958) Output + Mono Input'), 'output:analog-stereo': ('Analog Stereo Output', 'Analog Stereo Output'), 'output:analog-stereo+input:mono-fallback': ('Analog Stereo Output + Mono Input', 'Analog Stereo Output + Mono Input')}, 'Built-in Audio': {'off': ('Off', 'Off'), 'pro-audio': ('Pro Audio', 'Pro Audio'), 'input:analog-stereo': ('Analog Stereo Input', 'Analog Stereo Input'), 'output:analog-stereo': ('Analog Stereo Output', 'Analog Stereo Output'), 'output:analog-stereo+input:analog-stereo': ('Analog Stereo Duplex', 'Analog Stereo Duplex')}, 'MOMENTUM 4': {'off': ('Off', 'Off'), 'headset-head-unit-cvsd': ('Headset Head Unit (HSP/HFP, codec CVSD)', 'Headset Head Unit (HSP/HFP, codec CVSD)'), 'headset-head-unit': ('Headset Head Unit (HSP/HFP, codec MSBC)', 'Headset Head Unit (HSP/HFP, codec MSBC)'), 'a2dp-sink-sbc_xq': ('High Fidelity Playback (A2DP Sink, codec SBC-XQ)', 'High Fidelity Playback (A2DP Sink, codec SBC-XQ)'), 'a2dp-sink-sbc': ('High Fidelity Playback (A2DP Sink, codec SBC)', 'High Fidelity Playback (A2DP Sink, codec SBC)'), 'a2dp-sink-aac': ('High Fidelity Playback (A2DP Sink, codec AAC)', 'High Fidelity Playback (A2DP Sink, codec AAC)'), 'a2dp-sink-aptx': ('High Fidelity Playback (A2DP Sink, codec aptX)', 'High Fidelity Playback (A2DP Sink, codec aptX)'), 'a2dp-sink': ('High Fidelity Playback (A2DP Sink, codec aptX HD)', 'High Fidelity Playback (A2DP Sink, codec aptX HD)')}, 'BTD 600': {'off': ('Off', 'Off'), 'input:mono-fallback': ('Mono Input', 'Mono Input'), 'pro-audio': ('Pro Audio', 'Pro Audio'), 'output:iec958-stereo': ('Digital Stereo (IEC958) Output', 'Digital Stereo (IEC958) Output'), 'output:iec958-stereo+input:mono-fallback': ('Digital Stereo (IEC958) Output + Mono Input', 'Digital Stereo (IEC958) Output + Mono Input'), 'output:analog-stereo': ('Analog Stereo Output', 'Analog Stereo Output'), 'output:analog-stereo+input:mono-fallback': ('Analog Stereo Output + Mono Input', 'Analog Stereo Output + Mono Input')}, 'Tommy (SONOS D87A)': {'off': ('Off', 'Off'), 'a2dp-sink-sbc_xq': ('High Fidelity Playback (A2DP Sink, codec SBC-XQ)', 'High Fidelity Playback (A2DP Sink, codec SBC-XQ)'), 'a2dp-sink-sbc': ('High Fidelity Playback (A2DP Sink, codec SBC)', 'High Fidelity Playback (A2DP Sink, codec SBC)'), 'a2dp-sink': ('High Fidelity Playback (A2DP Sink, codec AAC)', 'High Fidelity Playback (A2DP Sink, codec AAC)')}, 'AirPods - Find My': {'off': ('Off', 'Off'), 'a2dp-sink-sbc_xq': ('High Fidelity Playback (A2DP Sink, codec SBC-XQ)', 'High Fidelity Playback (A2DP Sink, codec SBC-XQ)'), 'a2dp-sink-sbc': ('High Fidelity Playback (A2DP Sink, codec SBC)', 'High Fidelity Playback (A2DP Sink, codec SBC)'), 'a2dp-sink': ('High Fidelity Playback (A2DP Sink, codec AAC)', 'High Fidelity Playback (A2DP Sink, codec AAC)'), 'headset-head-unit-cvsd': ('Headset Head Unit (HSP/HFP, codec CVSD)', 'Headset Head Unit (HSP/HFP, codec CVSD)'), 'headset-head-unit-msbc': ('Headset Head Unit (HSP/HFP, codec MSBC)', 'Headset Head Unit (HSP/HFP, codec MSBC)'), 'headset-head-unit': ('Headset Head Unit (HSP/HFP, codec LC3-24kHz)', 'Headset Head Unit (HSP/HFP, codec LC3-24kHz)')}, 'AirPods': {'off': ('Off', 'Off'), 'a2dp-sink-sbc_xq': ('High Fidelity Playback (A2DP Sink, codec SBC-XQ)', 'High Fidelity Playback (A2DP Sink, codec SBC-XQ)'), 'a2dp-sink-sbc': ('High Fidelity Playback (A2DP Sink, codec SBC)', 'High Fidelity Playback (A2DP Sink, codec SBC)'), 'a2dp-sink': ('High Fidelity Playback (A2DP Sink, codec AAC)', 'High Fidelity Playback (A2DP Sink, codec AAC)'), 'headset-head-unit-cvsd': ('Headset Head Unit (HSP/HFP, codec CVSD)', 'Headset Head Unit (HSP/HFP, codec CVSD)'), 'headset-head-unit-msbc': ('Headset Head Unit (HSP/HFP, codec MSBC)', 'Headset Head Unit (HSP/HFP, codec MSBC)'), 'headset-head-unit': ('Headset Head Unit (HSP/HFP, codec LC3-24kHz)', 'Headset Head Unit (HSP/HFP, codec LC3-24kHz)')}}
+remove-output-volume-slider=false
+version=2
+widgets-order=['profile-switcher', 'mpris-controllers', 'output-volume-slider', 'perdevice-volume-sliders', 'input-volume-slider', 'balance-slider', 'applications-volume-sliders']
+
+[restartto]
+blacklist=['Fedora', 'EFI USB Device', 'EFI Network', 'EFI DVD/CDROM']
+
+[scale-minimize]
+animation-curve=0
+bounce-scale=1.0
+duration=200
+
+[search-light]
+animation-speed=100.0
+background-color=(0.0, 0.0, 0.0, 0.80000000000000004)
+blur-background=false
+blur-brightness=0.59999999999999998
+blur-sigma=30.0
+border-color=(0.0, 0.0, 0.0, 1.0)
+border-radius=1.7657657657657655
+border-thickness=1
+entry-font-size=1
+monitor-count=1
+panel-icon-color=(0.0, 0.0, 0.0, 1.0)
+preferred-monitor=0
+scale-height=0.10000000000000001
+scale-width=0.10000000000000001
+secondary-shortcut-search=['<Super>space']
+shortcut-search=['<Control>space']
+show-panel-icon=true
+window-effect=0
+window-effect-color=(0.0, 0.0, 0.0, 1.0)
+
+[simple-taskbar]
+activities-button-position='left'
+activities-button-visible=true
+app-alignment='center'
+application-overflow-style='taskbar'
+clock-position='right'
+combine-app-buttons-mode='always'
+custom-indicator-colors-enabled=false
+custom-panel-color-enabled=false
+default-gnome-panel=false
+folder-menu-enabled=true
+folder-menu-position='right'
+folder-menu-uri='file:///var/home/tg/Downloads'
+gnome-start-button-visible=true
+grid-alt-tab-enabled=true
+hide-pinned-taskbar-apps=false
+hot-edge-overview-enabled=true
+icon-size=32
+icon-spacing=3
+match-icon-color=false
+multi-monitor-panels=true
+multi-window-click-spread=true
+nautilus-places-enabled=true
+panel-autohide-enabled=false
+panel-border-enabled=false
+panel-border-light-enabled=false
+panel-button-padding=-1
+panel-height=49
+panel-item-order=['left-box', 'center-box', 'folder-menu', 'start-button', 'activities', 'applications', 'tray-overflow', 'right-box', 'system-menu', 'clock', 'show-desktop']
+panel-position='top'
+panel-theme='dark'
+panel-theme-follow-system=true
+running-indicator-style='rounded'
+show-desktop-button-position='right'
+show-desktop-button-visible=false
+start-button-position='center'
+start-menu-displaced-overlay-key=@as []
+start-menu-super-key=true
+start-menu-super-tab=false
+system-menu-position='right'
+target-prefs-page=''
+task-manager-app='io.missioncenter.MissionCenter.desktop'
+taskbar-locked=true
+transparency-enabled=false
+transparency-level=20
+tray-overflow-enabled=true
+tray-overflow-position='right'
+use-pinned-apps-as-launchers=false
+volume-mixer-enabled=false
+windows-start-menu-enabled=false
+windows-xp-theme-enabled=false
+
+[tiling-assistant]
+activate-layout0=@as []
+activate-layout1=@as []
+activate-layout2=@as []
+activate-layout3=@as []
+auto-tile=@as []
+center-window=@as []
+debugging-free-rects=@as []
+debugging-show-tiled-rects=@as []
+default-move-mode=0
+dynamic-keybinding-behavior=0
+focus-hint=0
+focus-hint-color='rgb(53,132,228)'
+import-layout-examples=false
+last-version-installed=54
+restore-window=['<Super>Down']
+search-popup-layout=@as []
+tile-bottom-half=['<Super>KP_2']
+tile-bottom-half-ignore-ta=@as []
+tile-bottomleft-quarter=['<Super>KP_1']
+tile-bottomleft-quarter-ignore-ta=@as []
+tile-bottomright-quarter=['<Super>KP_3']
+tile-bottomright-quarter-ignore-ta=@as []
+tile-edit-mode=@as []
+tile-left-half=['<Super>Left', '<Super>KP_4']
+tile-left-half-ignore-ta=@as []
+tile-maximize=['<Super>Up', '<Super>KP_5']
+tile-maximize-horizontally=@as []
+tile-maximize-vertically=@as []
+tile-right-half=['<Super>Right', '<Super>KP_6']
+tile-right-half-ignore-ta=@as []
+tile-top-half=['<Super>KP_8']
+tile-top-half-ignore-ta=@as []
+tile-topleft-quarter=['<Super>KP_7']
+tile-topleft-quarter-ignore-ta=@as []
+tile-topright-quarter=['<Super>KP_9']
+tile-topright-quarter-ignore-ta=@as []
+toggle-always-on-top=@as []
+toggle-tiling-popup=@as []
+
+[tilingshell]
+active-screen-edges=true
+cycle-layouts=['<Alt><Super>c']
+cycle-layouts-backward=['<Shift><Alt><Super>c']
+edge-tiling-mode='adaptive'
+enable-autotiling=false
+enable-blur-selected-tilepreview=false
+enable-blur-snap-assistant=false
+enable-screen-edges-windows-suggestions=true
+enable-smart-window-border-radius=true
+enable-snap-assist=false
+enable-snap-assistant-windows-suggestions=true
+enable-tiling-system-windows-suggestions=true
+enable-window-border=false
+focus-window-down=['<Alt>j']
+focus-window-left=['<Alt>h']
+focus-window-next=['<Alt>n']
+focus-window-prev=['<Alt>p']
+focus-window-right=['<Alt>l']
+focus-window-up=['<Alt>k']
+highlight-current-window=['<Alt><Super>m']
+inner-gaps=uint32 4
+last-version-name-installed='17.3'
+layouts-json='[{"id":"14465636","tiles":[{"x":0,"y":0,"width":0.5,"height":1,"groups":[1]},{"x":0.5,"y":0,"width":0.4999999999999993,"height":1,"groups":[1]}]},{"id":"23462020","tiles":[{"x":0,"y":0,"width":0.5,"height":1,"groups":[1]},{"x":0.5,"y":0,"width":0.5000000000000004,"height":0.5,"groups":[2,1]},{"x":0.5,"y":0.5,"width":0.5000000000000004,"height":0.5,"groups":[2,1]}]},{"id":"Layout 3","tiles":[{"x":0,"y":0,"width":0.33,"height":1,"groups":[1]},{"x":0.33,"y":0,"width":0.67,"height":1,"groups":[1]}]},{"id":"Layout 4","tiles":[{"x":0,"y":0,"width":0.67,"height":1,"groups":[1]},{"x":0.67,"y":0,"width":0.33,"height":1,"groups":[1]}]}]'
+move-window-center=['']
+move-window-down=['<Alt><Super>j']
+move-window-left=['<Alt><Super>h']
+move-window-right=['<Alt><Super>l']
+move-window-up=['<Alt><Super>k']
+outer-gaps=uint32 4
+overridden-settings="{\"org.gnome.mutter.keybindings\":{\"toggle-tiled-right\":\"['<Super>Right']\",\"toggle-tiled-left\":\"['<Super>Left']\"},\"org.gnome.desktop.wm.keybindings\":{\"maximize\":\"['<Super>Up']\",\"unmaximize\":\"['<Super>Down']\"},\"org.gnome.mutter\":{\"edge-tiling\":\"true\"}}"
+quarter-tiling-threshold=uint32 25
+selected-layouts=[['14465636'], ['14465636'], ['14465636'], ['14465636']]
+show-indicator=false
+snap-assist-sync-layout=true
+span-multiple-tiles-activation-key=['1']
+span-window-all-tiles=['<Control><Alt><Super>Return']
+span-window-down=['<Control><Alt><Super>j']
+span-window-left=['<Control><Alt><Super>h']
+span-window-right=['<Control><Alt><Super>l']
+span-window-up=['<Control><Alt><Super>k']
+tiling-system-activation-key=['1']
+tiling-system-deactivation-key=['0']
+top-edge-maximize=true
+untile-window=['<Control><Alt><Super>backslash']
+window-border-width=uint32 3
+window-use-custom-border-color=false

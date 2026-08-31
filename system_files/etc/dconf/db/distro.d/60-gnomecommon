@@ -1,0 +1,14 @@
+[org/gnome/shell]
+always-show-log-out=true
+enabled-extensions=['AlphabeticalAppGrid@stuarthayhurst','appindicatorsupport@rgcjonas.gmail.com','blur-my-shell@aunetx','custom-command-list@storageb.github.com','dash-to-dock@micxgx.gmail.com','hotedge@jonathan.jdoda.ca','hide-minimized@danigm.net','just-perfection-desktop@just-perfection','light-style@gnome-shell-extensions.gcampax.github.com','nightthemeswitcher@romainvigier.fr','quick-settings-audio-panel@rayzeq.github.io','smile-extension@mijorus.it','tiling-assistant@leleat-on-github','bazaar-integration@kolunmi.github.io','gradia-integration@alexandervanhee.github.io','caffeine@patapon.info','clipboard-indicator@tudmotu.com','tailscale-gnome-qs@tailscale-qs.github.io','Studi-Brightness-Control@matey-0','tilingshell@ferrarodomenico.com','lightning-gnome-launcher@avimanyu','disable-workspace-switch-animation@osmancevik']
+
+[org/gnome/mutter]
+dynamic-workspaces=false
+edge-tiling=true
+
+[org/gnome/desktop/wm/preferences]
+num-workspaces=4
+button-layout=':minimize,maximize,close'
+
+[org/gnome/desktop/interface]
+enable-hot-corners=false

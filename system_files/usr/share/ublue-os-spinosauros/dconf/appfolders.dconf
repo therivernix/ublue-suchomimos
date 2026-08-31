@@ -1,0 +1,90 @@
+[/]
+folder-children=['2792789f-581b-4d25-9520-0869801c7466', '6a213ebe-830a-4320-a210-a462048b5039', 'e5005869-28d1-45a4-9c08-3ff6fda6d26c', 'ba67025f-f6ee-445d-9c87-ad48ec04e0ae', 'fbd9585d-554c-4f5f-9aff-e0ffcaf0c0da', 'a46ca605-f7d9-409e-a098-14aee61a8b6e', '77182548-6b6a-4b34-ab34-b83b34bde672', '67c46594-1cd6-44c1-a3e4-467dea4632e8', '3cc3f960-0f64-4be5-9daf-e75547d1a70f', 'db87655c-4eb6-4cba-9f03-b6e356694ab1']
+
+[folders/2792789f-581b-4d25-9520-0869801c7466]
+apps=['io.github.maniacx.BudsLink.desktop', 'ca.desrt.dconf-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.DiskUtility.desktop', 'com.somaxa8.earx.desktop', 'com.mattjakeman.ExtensionManager.desktop', 'org.gnome.FileRoller.desktop', 'firewall-config.desktop', 'org.gnome.Firmware.desktop', 'io.github.flattool.Ignition.desktop', 'org.gnome.Logs.desktop', 'page.codeberg.libre_menu_editor.LibreMenuEditor.desktop', 'io.missioncenter.MissionCenter.desktop', 'org.freedesktop.MalcontentControl.desktop', 'org.gnome.PowerStats.desktop', 'page.tesk.Refine.desktop', 'io.github.vikdevelop.SaveDesktop.desktop', 'it.mijorus.smile.desktop', 'io.github.plrigaux.sysd-manager.desktop', 'org.gnome.Tour.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Sysprof.desktop', 'org.pulseaudio.pavucontrol.desktop']
+name='System Utilities'
+translate=false
+
+[folders/3cc3f960-0f64-4be5-9daf-e75547d1a70f]
+apps=['1password.desktop', 'org.keepassxc.KeePassXC.desktop', 'com.yubico.yubioath.desktop']
+name='Passwords'
+translate=false
+
+[folders/67c46594-1cd6-44c1-a3e4-467dea4632e8]
+apps=['com.brave.Browser.desktop', 'org.gnome.Epiphany.WebApp_40cd7fa704317acc87653800dd3c8ddbd7304eab.desktop', 'org.gnome.Epiphany.desktop']
+name='Internet'
+
+[folders/6a213ebe-830a-4320-a210-a462048b5039]
+apps=['io.github.kolunmi.Bazaar.desktop', 'com.ranfdev.DistroShelf.desktop', 'com.github.tchx84.Flatseal.desktop', 'it.mijorus.gearlever.desktop', 'appimagetool.desktop', 'io.github.flattool.Warehouse.desktop']
+name='App Management'
+translate=false
+
+[folders/77182548-6b6a-4b34-ab34-b83b34bde672]
+apps=['org.gnome.Snapshot.desktop', 'be.alexandervanhee.gradia.desktop', 'org.gnome.Loupe.desktop', 'com.github.PintaProject.Pinta.desktop']
+name='Graphics'
+
+[folders/Containers]
+apps=['io.github.dvlv.boxbuddyrs.desktop', 'com.github.marhkb.Pods.desktop']
+categories=['Distrobox']
+name='Containers'
+translate=false
+
+[folders/Development]
+apps=['dev-pod.desktop', 'code.desktop', 'virt-manager.desktop', 'io.podman_desktop.PodmanDesktop.desktop']
+categories=['Development', 'IDE']
+excluded-apps=['org.gnome.Sysprof.desktop']
+name='Development'
+translate=false
+
+[folders/Games]
+categories=['Game']
+excluded-apps=['steam.desktop', 'net.lutris.Lutris.desktop', 'io.github.benjamimgois.goverlay.desktop', 'com.vysp3r.ProtonPlus.desktop', 'io.github.fastrizwaan.WineZGUI.desktop']
+name='Games'
+translate=false
+
+[folders/GamingUtilities]
+apps=['protontricks.desktop', 'discover_overlay_configure.desktop', 'com.vysp3r.ProtonPlus.desktop', 'io.github.benjamimgois.goverlay.desktop', 'com.gerbilsoft.rom-properties.rp-config.desktop', 'steamos-nested-desktop.desktop']
+name='Gaming Utilities'
+translate=false
+
+[folders/Productivity]
+apps=['org.gnome.Papers.desktop', 'org.gnome.Connections.desktop', 'simple-scan.desktop']
+name='Productivity'
+translate=false
+
+[folders/Utilities]
+apps=['ca.desrt.dconf-editor.desktop', 'com.mattjakeman.ExtensionManager.desktop', 'org.fedoraproject.MediaWriter.desktop', 'firewall-config.desktop', 'com.github.tchx84.Flatseal.desktop', 'io.github.flattool.Ignition.desktop', 'io.gitlab.adhami3310.Impression.desktop', 'input-remapper-gtk.desktop', 'org.gnome.World.PikaBackup.desktop', 'page.tesk.Refine.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Firmware', 'input-leap.desktop', 'solaar.desktop', 'org.gnome.Sysprof.desktop', 'remote-viewer.desktop', 'io.github.flattool.Warehouse.desktop']
+categories=['X-GNOME-Utilities']
+name='X-GNOME-Utilities.directory'
+translate=true
+
+[folders/Wine]
+apps=['winetricks.desktop']
+categories=['X-Wine', 'wine-wine']
+name='Wine'
+translate=false
+
+[folders/a46ca605-f7d9-409e-a098-14aee61a8b6e]
+apps=['de.leopoldluley.Clapgrep.desktop', 'org.fedoraproject.MediaWriter.desktop', 'org.filezillaproject.Filezilla.desktop', 'io.gitlab.adhami3310.Impression.desktop', 'io.github.tobagin.keysmith.desktop', 'org.gnome.World.PikaBackup.desktop', 'org.remmina.Remmina.desktop', 'com.synology.SynologyDrive.desktop', 'de.swsnr.turnon.desktop', 'code.desktop', 'com.vscodium.codium.desktop']
+name='Power Tools'
+translate=false
+
+[folders/ba67025f-f6ee-445d-9c87-ad48ec04e0ae]
+apps=['org.gnome.Calculator.desktop', 'org.gnome.clocks.desktop', 'org.gnome.SimpleScan.desktop', 'org.gnome.Papers.desktop', 'org.gaphor.Gaphor.desktop', 'org.libreoffice.LibreOffice.desktop', 'org.libreoffice.LibreOffice.base.desktop', 'org.libreoffice.LibreOffice.calc.desktop', 'org.libreoffice.LibreOffice.draw.desktop', 'org.libreoffice.LibreOffice.impress.desktop', 'org.libreoffice.LibreOffice.math.desktop', 'org.libreoffice.LibreOffice.writer.desktop', 'org.gnome.Epiphany.WebApp_32ace4fdd5b4ed7286ca6c7ea8de6f83a17f1919.desktop', 'com.vixalien.sticky.desktop', 'org.gnome.TextEditor.desktop', 'dev.mufeed.Wordbook.desktop', 'com.github.xournalpp.xournalpp.desktop']
+name='Office'
+
+[folders/db87655c-4eb6-4cba-9f03-b6e356694ab1]
+apps=['remote-viewer.desktop', 'virt-manager.desktop']
+name='Virtual Machines'
+translate=false
+
+[folders/e5005869-28d1-45a4-9c08-3ff6fda6d26c]
+apps=['io.github.victoralvesf.aonsoku.desktop', 'org.gnome.Decibels.desktop', 'it.dottorblaster.cauldron.desktop', 'cafe.avery.Delfin.desktop', 'app.drey.EarTag.desktop', 'fr.handbrake.ghb.desktop', 'org.kde.kdenlive.desktop', 'nl.andreasknoben.Laser.desktop', 'io.github.ans_ibrahim.Memento.desktop', 'com.obsproject.Studio.desktop', 'org.nickvision.tubeconverter.desktop', 'sidra.desktop', 'org.gnome.SoundRecorder.desktop', 'Psysonic.desktop', 'org.gnome.Showtime.desktop']
+name='Media'
+translate=false
+
+[folders/fbd9585d-554c-4f5f-9aff-e0ffcaf0c0da]
+apps=['input-remapper-gtk.desktop', 'com.valvesoftware.Steam.desktop', 'steam.desktop']
+name='Gaming'
+translate=false
