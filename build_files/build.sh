@@ -37,7 +37,6 @@ dnf5 remove -y \
 
 
 ### Removing built-in GNOME Shell extensions
-
 rm -rf /usr/share/gnome-shell/extensions/apps-menu@gnome-shell-extensions.gcampax.github.com
 rm -rf /usr/share/gnome-shell/extensions/launch-new-instance@gnome-shell-extensions.gcampax.github.com
 rm -rf /usr/share/gnome-shell/extensions/places-menu@gnome-shell-extensions.gcampax.github.com
@@ -45,11 +44,12 @@ rm -rf /usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcam
 
 
 ### Compile GSettings schemas for GNOME extensions
-
 find /usr/share/gnome-shell/extensions -type d -name schemas \
     -exec glib-compile-schemas {} \;
 
+### Reloading dconf to ingest settings and apply kb shortcuts
+# Compile dconf databases
+dconf update
 
-### Example for enabling a System Unit File
-
+### Example for enabling a System Unit File\
 systemctl enable podman.socket
