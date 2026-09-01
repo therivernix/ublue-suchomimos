@@ -132,7 +132,7 @@ export default class LightningLauncherExt extends Extension {
         return;
       }
     if (this._shortcuts.listenFor(fallback, () => this._toggleLauncher())) {
-      Main.notify('Lightning Launcher', `${preferred} unavailable, using ${fallback}`);
+      //Main.notify('Lightning Launcher', `${preferred} unavailable, using ${fallback}`);
       return;
     }
     console.error('[Lightning] Could not register any shortcut');
