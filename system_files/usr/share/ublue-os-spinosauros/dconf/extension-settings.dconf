@@ -100,7 +100,7 @@ toggle-panel=true
 
 [caffeine]
 cli-toggle=false
-indicator-position-max=2
+indicator-position-max=1
 user-enabled=true
 
 [clipboard-indicator]
@@ -111,14 +111,14 @@ clear-on-boot=true
 disable-down-arrow=true
 display-mode=0
 excluded-apps=['1password']
-next-history-clear=1788499832
+next-history-clear=1788619046
 open-at-cursor=true
 paste-on-select=true
 strip-text=true
 toggle-menu=['<Super>v']
 
 [custom-command-list]
-command-order=[7, 26, 6, 19, 34, 33, 30, 31, 32, 17, 12, 14, 2, 3, 4, 5, 15, 11, 28, 10, 1, 8, 9, 29, 21, 22, 23, 13, 16, 18, 24, 25, 27, 20, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+command-order=[7, 26, 6, 19, 34, 33, 30, 31, 32, 17, 12, 35, 36, 14, 2, 3, 4, 5, 15, 11, 28, 10, 1, 8, 9, 29, 37, 21, 22, 23, 13, 16, 18, 24, 25, 27, 20, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
 command1=('---', '', '', true)
 command10=('Extensions', '/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=extension-manager --file-forwarding com.mattjakeman.ExtensionManager @@u %U @@', 'application-x-addon-symbolic', true)
 command11=('---', '', '', true)
@@ -140,7 +140,7 @@ command25=('Reboot into UEFI', 'ptyxis -- ujust spino-reboot-into-firmware', 'sy
 command26=('---', '', '', false)
 command27=('---', '', '', true)
 command28=('Configuration Scripts', 'ptyxis -- ujust --choose', 'utilities-terminal-symbolic', true)
-command29=('Rebase and Pin Update', 'ptyxis -- /usr/bin/ujust spino-rebase', 'view-pin-symbolic', true)
+command29=('Pin Update', 'ptyxis -- /usr/bin/ujust spino-rebase', 'view-pin-symbolic', true)
 command3=('Appearance', 'gnome-control-center background', 'preferences-desktop-appearance-symbolic', true)
 command30=('Recent', 'nautilus recent://', 'document-open-recent-symbolic', true)
 command31=('Starred', 'nautilus starred://', 'starred-symbolic', true)
@@ -149,7 +149,7 @@ command33=('Home', 'nautilus', 'go-home-symbolic', false)
 command34=('---', '', '', true)
 command35=('', '', '', true)
 command36=('', '', '', true)
-command37=('', '', '', true)
+command37=('Pause Updates', 'ptyxis -- /usr/bin/ujust toggle-updates', 'media-playback-pause-symbolic', true)
 command38=('', '', '', true)
 command39=('', '', '', true)
 command4=('Displays', 'gnome-control-center display', 'video-display-symbolic', true)
