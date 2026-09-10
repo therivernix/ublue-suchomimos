@@ -52,9 +52,6 @@ tray-pos='right'
 rounded-blur-found=true
 settings-version=2
 
-[blur-my-shell/appfolder]
-blur=false
-
 [blur-my-shell/applications]
 pipeline='pipeline_default'
 
@@ -69,17 +66,13 @@ pipeline='pipeline_default_rounded'
 pipeline='pipeline_default'
 
 [blur-my-shell/overview]
+blur=true
 pipeline='pipeline_default'
 
 [blur-my-shell/panel]
-blur=false
-brightness=0.80000000000000004
 force-light-text=true
-override-background=true
 pipeline='pipeline_default'
-sigma=1
 static-blur=false
-style-panel=0
 
 [blur-my-shell/popup]
 blur=false
@@ -100,7 +93,7 @@ toggle-panel=true
 
 [caffeine]
 cli-toggle=false
-indicator-position-max=1
+indicator-position-max=3
 user-enabled=true
 
 [clipboard-indicator]
@@ -111,48 +104,48 @@ clear-on-boot=true
 disable-down-arrow=true
 display-mode=0
 excluded-apps=['1password']
-next-history-clear=1788619046
+next-history-clear=1789141714
 open-at-cursor=true
 paste-on-select=true
 strip-text=true
 toggle-menu=['<Super>v']
 
 [custom-command-list]
-command-order=[7, 26, 6, 19, 34, 33, 30, 31, 32, 17, 12, 35, 36, 14, 2, 3, 4, 5, 15, 11, 28, 10, 1, 8, 9, 29, 37, 21, 22, 23, 13, 16, 18, 24, 25, 27, 20, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
-command1=('---', '', '', true)
-command10=('Extensions', '/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=extension-manager --file-forwarding com.mattjakeman.ExtensionManager @@u %U @@', 'application-x-addon-symbolic', true)
+command-order=[1, 2, 4, 5, 6, 7, 8, 9, 3, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+command1=('Activities Overview', 'dbus-send --session --dest=org.gnome.Shell --type=method_call /org/gnome/Shell org.freedesktop.DBus.Properties.Set string:org.gnome.Shell string:OverviewActive variant:boolean:true', 'focus-windows-symbolic', false)
+command10=('Trash', 'nautilus trash://', 'user-trash-symbolic', true)
 command11=('---', '', '', true)
-command12=('---', '', '', true)
-command13=('---', '', '', true)
+command12=('', '', '', true)
+command13=('', '', '', true)
 command14=('Settings', 'gnome-control-center', 'org.gnome.Settings-symbolic', true)
-command15=('Keyboard', 'gnome-control-center keyboard', 'input-keyboard-symbolic', true)
-command16=('Battery Controls', 'ptyxis -- ujust spino-battery-management', 'battery-level-100-charged-symbolic', false)
-command17=('Trash', 'nautilus trash://', 'user-trash-symbolic', true)
-command18=('Fan Controls', 'ptyxis -- ujust spino-fancontrol', 'weather-windy-symbolic', false)
-command19=('Synology Drive', 'nautilus ~/SynologyDrive', 'folder-remote-symbolic', false)
-command2=('About', 'gnome-control-center system about', 'help-about-symbolic', false)
-command20=('Customize Menu', 'gnome-extensions prefs custom-command-list@storageb.github.com', 'document-edit-symbolic', true)
-command21=('---', '', '', true)
-command22=('Toggle TPM Unlock', 'ptyxis -- ujust toggle-tpm2', 'changes-prevent-symbolic', false)
-command23=('Manage Passphrases', 'ptyxis -- ujust spino-manage-luks-passphrases', 'dialog-password-symbolic', false)
-command24=('---', '', '', true)
-command25=('Reboot into UEFI', 'ptyxis -- ujust spino-reboot-into-firmware', 'system-reboot-symbolic', true)
-command26=('---', '', '', false)
-command27=('---', '', '', true)
-command28=('Configuration Scripts', 'ptyxis -- ujust --choose', 'utilities-terminal-symbolic', true)
-command29=('Pin Update', 'ptyxis -- /usr/bin/ujust spino-rebase', 'view-pin-symbolic', true)
-command3=('Appearance', 'gnome-control-center background', 'preferences-desktop-appearance-symbolic', true)
-command30=('Recent', 'nautilus recent://', 'document-open-recent-symbolic', true)
-command31=('Starred', 'nautilus starred://', 'starred-symbolic', true)
-command32=('Network', 'nautilus network://', 'network-server-symbolic', false)
-command33=('Home', 'nautilus', 'go-home-symbolic', false)
+command15=('About', 'gnome-control-center system about', 'help-about-symbolic', false)
+command16=('Appearance', 'gnome-control-center background', 'preferences-desktop-appearance-symbolic', false)
+command17=('Displays', 'gnome-control-center display', 'video-display-symbolic', false)
+command18=('Sound', 'gnome-control-center sound', 'audio-x-generic-symbolic', false)
+command19=('Keyboard', 'gnome-control-center keyboard', 'input-keyboard-symbolic', false)
+command2=('---', '', '', false)
+command20=('---', '', '', false)
+command21=('Configuration Scripts', 'ptyxis -- ujust --choose', 'utilities-terminal-symbolic', false)
+command22=('Extensions', '/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=extension-manager --file-forwarding com.mattjakeman.ExtensionManager @@u %U @@', 'application-x-addon-symbolic', false)
+command23=('---', '', '', true)
+command24=('Software Update', 'ptyxis -- /usr/bin/ujust update', 'software-update-available-symbolic', true)
+command25=('Firmware Update', 'ptyxis -- /usr/bin/ujust spino-update-firmware', 'application-x-firmware-symbolic', true)
+command26=('Pin Update', 'ptyxis -- /usr/bin/ujust spino-rebase', 'view-pin-symbolic', true)
+command27=('Pause Updates', 'ptyxis -- /usr/bin/ujust toggle-updates', 'media-playback-pause-symbolic', true)
+command28=('---', '', '', true)
+command29=('Toggle TPM Unlock', 'ptyxis -- ujust toggle-tpm2', 'changes-prevent-symbolic', false)
+command3=('Downloads', 'nautilus ~/Downloads', 'folder-download-symbolic', true)
+command30=('Manage Passphrases', 'ptyxis -- ujust spino-manage-luks-passphrases', 'dialog-password-symbolic', false)
+command31=('---', '', '', true)
+command32=('Battery Controls', 'ptyxis -- ujust spino-battery-management', 'battery-level-100-charged-symbolic', false)
+command33=('Fan Controls', 'ptyxis -- ujust spino-fancontrol', 'weather-windy-symbolic', false)
 command34=('---', '', '', true)
-command35=('', '', '', true)
-command36=('', '', '', true)
-command37=('Pause Updates', 'ptyxis -- /usr/bin/ujust toggle-updates', 'media-playback-pause-symbolic', true)
+command35=('Reboot into UEFI', 'ptyxis -- ujust spino-reboot-into-firmware', 'system-reboot-symbolic', true)
+command36=('---', '', '', true)
+command37=('Customize Menu', 'gnome-extensions prefs custom-command-list@storageb.github.com', 'document-edit-symbolic', true)
 command38=('', '', '', true)
 command39=('', '', '', true)
-command4=('Displays', 'gnome-control-center display', 'video-display-symbolic', true)
+command4=('Synology Drive', 'nautilus ~/SynologyDrive', 'folder-remote-symbolic', false)
 command40=('', '', '', true)
 command41=('', '', '', true)
 command42=('', '', '', true)
@@ -163,7 +156,7 @@ command46=('', '', '', true)
 command47=('', '', '', true)
 command48=('', '', '', true)
 command49=('', '', '', true)
-command5=('Sound', 'gnome-control-center sound', 'audio-x-generic-symbolic', true)
+command5=('---', '', '', false)
 command50=('', '', '', true)
 command51=('', '', '', true)
 command52=('', '', '', true)
@@ -174,7 +167,7 @@ command56=('', '', '', true)
 command57=('', '', '', true)
 command58=('', '', '', true)
 command59=('', '', '', true)
-command6=('Downloads', 'nautilus ~/Downloads', 'folder-download-symbolic', true)
+command6=('Home', 'nautilus', 'go-home-symbolic', true)
 command60=('', '', '', true)
 command61=('', '', '', true)
 command62=('', '', '', true)
@@ -185,7 +178,7 @@ command66=('', '', '', true)
 command67=('', '', '', true)
 command68=('', '', '', true)
 command69=('', '', '', true)
-command7=('Activities Overview', 'dbus-send --session --dest=org.gnome.Shell --type=method_call /org/gnome/Shell org.freedesktop.DBus.Properties.Set string:org.gnome.Shell string:OverviewActive variant:boolean:true', 'focus-windows-symbolic', false)
+command7=('Recent', 'nautilus recent://', 'document-open-recent-symbolic', true)
 command70=('', '', '', true)
 command71=('', '', '', true)
 command72=('', '', '', true)
@@ -196,7 +189,7 @@ command76=('', '', '', true)
 command77=('', '', '', true)
 command78=('', '', '', true)
 command79=('', '', '', true)
-command8=('Software Update', 'ptyxis -- /usr/bin/ujust update', 'software-update-available-symbolic', true)
+command8=('Starred', 'nautilus starred://', 'starred-symbolic', false)
 command80=('', '', '', true)
 command81=('', '', '', true)
 command82=('', '', '', true)
@@ -207,7 +200,7 @@ command86=('', '', '', true)
 command87=('', '', '', true)
 command88=('', '', '', true)
 command89=('', '', '', true)
-command9=('Firmware Update', 'ptyxis -- /usr/bin/ujust spino-update-firmware', 'application-x-firmware-symbolic', true)
+command9=('Network', 'nautilus network://', 'network-server-symbolic', false)
 command90=('', '', '', true)
 command91=('', '', '', true)
 command92=('', '', '', true)
@@ -340,6 +333,17 @@ sort-special-folders=true
 start-corner='top-right'
 unstackedtypes=@as []
 
+[extension-list]
+button-icon=uint32 0
+enable-filter=true
+ignore-list=['AlphabeticalAppGrid@stuarthayhurst', 'gsconnect@andyholmes.github.io', 'hotedge@jonathan.jdoda.ca', 'bazaar-integration@kolunmi.github.io', 'BudsLink-Companion@maniacx.github.com', 'caffeine@patapon.info', 'clipboard-indicator@tudmotu.com', 'custom-command-list@storageb.github.com', 'dash-to-dock@micxgx.gmail.com', 'disable-workspace-switch-animation@osmancevik', 'extension-list@tu.berry', 'gradia-integration@alexandervanhee.github.io', 'just-perfection-desktop@just-perfection', 'lightning-gnome-launcher@avimanyu', 'smile-extension@mijorus.it', 'quick-settings-audio-panel@rayzeq.github.io', 'Studi-Brightness-Control@matey-0', 'tailscale-gnome-qs@tailscale-qs.github.io', 'tilingshell@ferrarodomenico.com']
+ignore-menu=false
+
+[frippery-panel-favorites]
+favorites-position=false
+other-apps-enabled=true
+other-apps-position=true
+
 [gradia-companion]
 tool-settings={'freehand': ('#000000', 3.0), 'rectangle': ('#44cc44', 3.0), 'solid-rectangle': ('#000000', 3.0), 'highlighter': ('#ffdd00', 4.0), 'arrow': ('#000000', 3.0), 'stamp': ('#000000', 3.0), 'select': ('#000000', 4.0)}
 
@@ -363,6 +367,8 @@ show-animation=false
 accent-color-icon=false
 activities-button=true
 animation=1
+clock-menu-position=0
+clock-menu-position-offset=0
 dash-app-running=false
 events-button=false
 panel=true
@@ -377,7 +383,7 @@ workspace=true
 
 [libpanel]
 alignment='right'
-layout=[['gnome@main', 'quick-settings-audio-panel@rayzeq.github.io/main']]
+layout=[['gnome@main', 'wack-lockscreen-clock@rinzler69-wastaken.github.com/main', 'quick-settings-audio-panel@rayzeq.github.io/main']]
 single-column=false
 
 [lightning-launcher]
@@ -388,7 +394,7 @@ location=(50.900727669070911, 5.4187500000000002)
 manual-schedule=true
 nightthemeswitcher-ondemand-keybinding=['<Shift><Super>t']
 sunrise=7.0
-sunset=20.0
+sunset=10.0
 
 [o-tiling]
 active-hint-overlay-enabled=false
@@ -596,3 +602,23 @@ top-edge-maximize=true
 untile-window=['<Control><Alt><Super>backslash']
 window-border-width=uint32 3
 window-use-custom-border-color=false
+
+[wack-lockscreen-clock]
+lockscreen-mode='wack'
+prompt-animation='shell'
+
+[workspaces-indicator-by-open-apps]
+apps-all-desaturate=false
+apps-inactive-effect='REDUCE OPACITY'
+apps-minimized-effect='DESATURATE'
+apps-show-window-title=false
+apps-symbolic-icons=false
+hide-activities-button=true
+icons-group='OFF'
+indicator-background-padding=1
+indicator-hide-empty=false
+indicator-show-active-workspace=true
+indicator-show-focused-app=true
+indicator-show-indexes=true
+position-in-panel='LEFT'
+position-index=1
