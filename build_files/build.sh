@@ -17,7 +17,8 @@ cp -avf "/ctx/system_files"/. /
 # Install packages from Fedora repositories
 dnf5 install -y \
     firefox \
-    firefox-langpacks
+    firefox-langpacks \
+    yelp
 
 # Disable RPM-OSTree package management support in GNOME Software
 #
