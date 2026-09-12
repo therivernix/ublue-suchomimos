@@ -3,7 +3,10 @@ set -euo pipefail
 
 SENTINEL="$HOME/.local/state/spinosauros-flatpak-setup.done"
 
+########################################
 # Don't run more than once
+########################################
+
 if [[ -f "$SENTINEL" ]]; then
     exit 0
 fi
@@ -19,7 +22,7 @@ echo "========================================"
 echo "Removing unwanted Flatpaks"
 echo "========================================"
 
-flatpak uninstall -y \
+flatpak uninstall -y --system \
     org.gnome.Calendar \
     org.gnome.Contacts \
     org.mozilla.firefox \
@@ -31,35 +34,39 @@ flatpak uninstall -y \
     org.gnome.Maps \
     org.gnome.DejaDup \
     org.gnome.Connections \
-    org.gnome.Weather || true
+    org.gnome.Weather \
+    || true
 
 
 ########################################
-# Configure Flatpak
+# Configure Flathub
 ########################################
 
 echo
 echo "========================================"
-echo "Configuring Flatpak"
+echo "Configuring Flathub"
 echo "========================================"
 
-# Make sure Flathub exists
 flatpak remote-add --if-not-exists --system \
     flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 
 ########################################
-# Migrate Fedora Flatpaks to Flathub
+# Find Fedora Flatpaks
 ########################################
 
 echo
 echo "========================================"
-echo "Migrating Fedora Flatpaks to Flathub"
+echo "Finding Fedora Flatpaks"
 echo "========================================"
 
-apps=$(flatpak list --system --app \
-    --columns=application,origin |
-    awk '$2 == "fedora" || $2 == "fedora-testing" {print $1}')
+apps="$(
+    flatpak list \
+        --system \
+        --app \
+        --columns=application,origin |
+    awk '$2 == "fedora" || $2 == "fedora-testing" {print $1}'
+)"
 
 if [[ -z "$apps" ]]; then
 
@@ -71,14 +78,59 @@ else
     echo "$apps"
     echo
 
+
+    ########################################
+    # Migrate Fedora Flatpaks to Flathub
+    ########################################
+
     while IFS= read -r app; do
         [[ -z "$app" ]] && continue
 
+        echo
         echo "========================================"
         echo "Migrating: $app"
         echo "========================================"
 
-        flatpak install --system --reinstall -y flathub "$app"
+        ####################################
+        # Check whether Flathub provides it
+        ####################################
+
+        if ! flatpak remote-info --system flathub "$app" >/dev/null 2>&1; then
+            echo "WARNING: $app is not available on Flathub."
+            echo "Keeping Fedora version."
+            continue
+        fi
+
+        ####################################
+        # Install Flathub version
+        ####################################
+
+        echo "Installing Flathub version..."
+
+        if flatpak install --system -y flathub "$app"; then
+
+            echo "Successfully migrated $app to Flathub."
+
+        else
+
+            echo "Normal installation failed."
+            echo "Attempting migration with downgrade allowed..."
+
+            if flatpak install --system -y \
+                --allow-downgrade \
+                flathub "$app"; then
+
+                echo "Successfully migrated $app to Flathub."
+
+            else
+
+                echo "WARNING: Failed to migrate $app."
+                echo "Keeping the existing Fedora version."
+                continue
+
+            fi
+
+        fi
 
     done <<< "$apps"
 
@@ -99,21 +151,26 @@ flatpak remote-delete -y --system fedora-testing || true
 
 
 ########################################
-# Show final configuration
+# Show current configuration
 ########################################
 
 echo
 echo "========================================"
-echo "Final Flatpak configuration"
+echo "Flatpak remotes"
 echo "========================================"
 
 flatpak remotes --system
 
-echo
-echo "Installed system Flatpaks:"
-echo "=========================="
 
-flatpak list --system --app --columns=application,name,origin
+echo
+echo "========================================"
+echo "Installed system Flatpaks"
+echo "========================================"
+
+flatpak list \
+    --system \
+    --app \
+    --columns=application,name,origin
 
 
 ########################################
@@ -134,21 +191,23 @@ flatpak preinstall -y
 
 echo
 echo "========================================"
-echo "Installed additional Flatpaks"
+echo "Final installed Flatpaks"
 echo "========================================"
 
-flatpak list --system --app --columns=application,name,origin
+flatpak list \
+    --system \
+    --app \
+    --columns=application,name,origin
 
 
 ########################################
 # Mark complete
 ########################################
 
-# Only create the sentinel after EVERYTHING succeeded
+# Only create the sentinel after EVERYTHING succeeded.
 touch "$SENTINEL"
 
 echo
 echo "========================================"
 echo "Flatpak setup completed successfully."
 echo "========================================"
-
