@@ -49,7 +49,8 @@ legacy-tray-enabled=false
 tray-pos='right'
 
 [blur-my-shell]
-rounded-blur-found=true
+pipelines={'pipeline_default': {'name': <'Default'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_000000000000'>, 'params': <{'radius': <30>, 'brightness': <0.59999999999999998>}>}>]>}, 'pipeline_default_rounded': {'name': <'Default rounded'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_000000000001'>, 'params': <{'radius': <30>, 'brightness': <0.59999999999999998>}>}>, <{'type': <'corner'>, 'id': <'effect_000000000002'>, 'params': <{'radius': <24>}>}>]>}, 'pipeline_92534288614259': {'name': <'New pipeline'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_70657428532866'>, 'params': <@a{sv} {}>}>, <{'type': <'corner'>, 'id': <'effect_72258997379961'>, 'params': <@a{sv} {}>}>]>}}
+rounded-blur-found=false
 settings-version=2
 
 [blur-my-shell/applications]
@@ -59,8 +60,9 @@ pipeline='pipeline_default'
 pipeline='pipeline_default'
 
 [blur-my-shell/dash-to-dock]
-blur=false
-pipeline='pipeline_default_rounded'
+blur=true
+pipeline='pipeline_92534288614259'
+static-blur=true
 
 [blur-my-shell/lockscreen]
 pipeline='pipeline_default'
@@ -93,7 +95,7 @@ toggle-panel=true
 
 [caffeine]
 cli-toggle=false
-indicator-position-max=3
+indicator-position-max=1
 user-enabled=true
 
 [clipboard-indicator]
@@ -104,7 +106,7 @@ clear-on-boot=true
 disable-down-arrow=true
 display-mode=0
 excluded-apps=['1password']
-next-history-clear=1789141714
+next-history-clear=1789292061
 open-at-cursor=true
 paste-on-select=true
 strip-text=true
@@ -133,7 +135,7 @@ command25=('Firmware Update', 'ptyxis -- /usr/bin/ujust spino-update-firmware', 
 command26=('Pin Update', 'ptyxis -- /usr/bin/ujust spino-rebase', 'view-pin-symbolic', true)
 command27=('Pause Updates', 'ptyxis -- /usr/bin/ujust toggle-updates', 'media-playback-pause-symbolic', true)
 command28=('---', '', '', true)
-command29=('Toggle TPM Unlock', 'ptyxis -- ujust toggle-tpm2', 'changes-prevent-symbolic', false)
+command29=('Toggle TPM Unlock', 'ptyxis -- ujust spino-toggle-luks-tpm-unlock', 'changes-prevent-symbolic', false)
 command3=('Downloads', 'nautilus ~/Downloads', 'folder-download-symbolic', true)
 command30=('Manage Passphrases', 'ptyxis -- ujust spino-manage-luks-passphrases', 'dialog-password-symbolic', false)
 command31=('---', '', '', true)
@@ -145,7 +147,7 @@ command36=('---', '', '', true)
 command37=('Customize Menu', 'gnome-extensions prefs custom-command-list@storageb.github.com', 'document-edit-symbolic', true)
 command38=('', '', '', true)
 command39=('', '', '', true)
-command4=('Synology Drive', 'nautilus ~/SynologyDrive', 'folder-remote-symbolic', false)
+command4=('Synology Drive', 'nautilus ~/SynologyDrive', 'folder-remote-symbolic', true)
 command40=('', '', '', true)
 command41=('', '', '', true)
 command42=('', '', '', true)
@@ -156,7 +158,7 @@ command46=('', '', '', true)
 command47=('', '', '', true)
 command48=('', '', '', true)
 command49=('', '', '', true)
-command5=('---', '', '', false)
+command5=('---', '', '', true)
 command50=('', '', '', true)
 command51=('', '', '', true)
 command52=('', '', '', true)
@@ -242,7 +244,7 @@ autohide-in-fullscreen=true
 background-color='rgb(0,0,0)'
 background-opacity=0.0
 click-action='previews'
-custom-background-color=true
+custom-background-color=false
 custom-theme-shrink=false
 customize-alphas=true
 dash-max-icon-size=32
@@ -257,13 +259,13 @@ hotkeys-overlay=true
 hotkeys-show-dock=true
 icon-size-fixed=true
 intellihide=true
-intellihide-mode='FOCUS_APPLICATION_WINDOWS'
+intellihide-mode='MAXIMIZED_WINDOWS'
 max-alpha=0.80000000000000004
 middle-click-action='launch'
 min-alpha=0.29999999999999999
 multi-monitor=true
 preferred-monitor=-2
-preferred-monitor-by-connector='eDP-1'
+preferred-monitor-by-connector='DP-4'
 pressure-threshold=50.0
 preview-size-scale=0.14999999999999999
 require-pressure-to-show=false
@@ -530,6 +532,7 @@ focus-hint=0
 focus-hint-color='rgb(53,132,228)'
 import-layout-examples=false
 last-version-installed=54
+overridden-settings={'org.gnome.mutter.edge-tiling': <@mb nothing>, 'org.gnome.desktop.wm.keybindings.maximize': <@mb nothing>, 'org.gnome.desktop.wm.keybindings.unmaximize': <@mb nothing>, 'org.gnome.mutter.keybindings.toggle-tiled-left': <@mb nothing>, 'org.gnome.mutter.keybindings.toggle-tiled-right': <@mb nothing>}
 restore-window=['<Super>Down']
 search-popup-layout=@as []
 tile-bottom-half=['<Super>KP_2']
@@ -560,6 +563,7 @@ active-screen-edges=true
 cycle-layouts=['<Alt><Super>c']
 cycle-layouts-backward=['<Shift><Alt><Super>c']
 edge-tiling-mode='adaptive'
+edge-tiling-offset=uint32 6
 enable-autotiling=false
 enable-blur-selected-tilepreview=false
 enable-blur-snap-assistant=false
