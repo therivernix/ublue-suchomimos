@@ -101,6 +101,11 @@ else
 
 fi
 
+
+########################################
+# Verify Fedora Flatpaks are gone
+########################################
+
 echo
 echo "Verifying no Fedora Flatpaks remain..."
 
@@ -133,17 +138,15 @@ echo "========================================"
 echo "Phase 4: Removing Fedora remotes"
 echo "========================================"
 
-flatpak remote-delete \
-    --system \
-    -y \
-    fedora \
-    || true
+# Remove fedora remote if it exists.
+if flatpak remotes --system | awk '{print $1}' | grep -qx 'fedora'; then
+    flatpak remote-delete --system --force fedora
+fi
 
-flatpak remote-delete \
-    --system \
-    -y \
-    fedora-testing \
-    || true
+# Remove fedora-testing remote if it exists.
+if flatpak remotes --system | awk '{print $1}' | grep -qx 'fedora-testing'; then
+    flatpak remote-delete --system --force fedora-testing
+fi
 
 
 ########################################
@@ -187,6 +190,9 @@ flatpak remote-add \
 # Verify Flathub exists
 ########################################
 
+echo
+echo "Verifying Flathub remote..."
+
 if ! flatpak remotes --system | \
     awk '{print $1}' | \
     grep -qx 'flathub'; then
@@ -220,29 +226,28 @@ if [[ -n "$apps" ]]; then
         echo "Installing from Flathub: $app"
         echo "----------------------------------------"
 
-        if flatpak install \
+        # Verify the application exists on Flathub.
+        if ! flatpak remote-info \
             --system \
+            flathub \
+            "$app" >/dev/null 2>&1; then
+
+            echo "ERROR: $app is not available on Flathub."
+            exit 1
+        fi
+
+        # Install the Flathub version.
+        #
+        # --allow-downgrade is intentional because the Fedora
+        # version may be newer than the Flathub version.
+        flatpak install \
+            --system \
+            --allow-downgrade \
             -y \
             flathub \
-            "$app"; then
+            "$app"
 
-            echo "Successfully installed $app from Flathub."
-
-        else
-
-            echo "Normal installation failed."
-            echo "Attempting downgrade if required..."
-
-            flatpak install \
-                --system \
-                -y \
-                --allow-downgrade \
-                flathub \
-                "$app"
-
-            echo "Successfully installed $app from Flathub."
-
-        fi
+        echo "Successfully installed $app from Flathub."
 
     done <<< "$apps"
 
@@ -254,11 +259,14 @@ fi
 
 
 ########################################
-# Verify every migrated app uses Flathub
+# Verify migrated applications
+# actually use Flathub
 ########################################
 
 echo
-echo "Verifying migrated Flatpaks..."
+echo "========================================"
+echo "Verifying Flatpak origins"
+echo "========================================"
 
 if [[ -n "$apps" ]]; then
 
@@ -279,7 +287,7 @@ if [[ -n "$apps" ]]; then
             exit 1
         fi
 
-        echo "Verified: $app → flathub"
+        echo "Verified: $app -> flathub"
 
     done <<< "$apps"
 
@@ -293,7 +301,7 @@ echo "Phase 6 completed successfully."
 
 ########################################
 # Phase 7
-# Run Flatpak preinstall
+# Install additional Flatpaks
 ########################################
 
 echo
