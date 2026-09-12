@@ -29,6 +29,13 @@ dnf5 install -y \
 dnf5 remove -y \
     gnome-software
 
+### Configure Flatpak remotes
+flatpak remote-delete --system fedora || true
+flatpak remote-delete --system fedora-testing || true
+
+flatpak remote-add --if-not-exists --system \
+    flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
 # Use a COPR example:
 #
 # dnf5 -y copr enable ublue-os/staging
@@ -57,6 +64,3 @@ dconf update
 
 ### Example for enabling a System Unit File\
 systemctl enable podman.socket
-systemctl enable flatpak-nuke-fedora.service
-systemctl enable flatpak-preinstall.service
-systemctl enable flatpak-system-helper.service

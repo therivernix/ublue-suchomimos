@@ -11,5 +11,10 @@ mkdir -p "$(dirname "$SENTINEL")"
 
 touch "$SENTINEL"
 
-set -euo pipefail
+flatpak remote-delete --system fedora || true
+flatpak remote-delete --system fedora-testing || true
+
+flatpak remote-add --if-not-exists --system \
+    flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+    
 flatpak preinstall -y 
