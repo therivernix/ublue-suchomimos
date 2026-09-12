@@ -6,6 +6,7 @@ toggle-message-tray=['<Super>n']
 [org/gnome/settings-daemon/plugins/media-keys]
 media-static=['gnome-control-center']
 control-center=['AudioMedia']
+home=['<Super>e']
 
 [org/gnome/settings-daemon/plugins/power]
 power-button-action='suspend'
