@@ -39,19 +39,6 @@ flatpak uninstall -y --system \
 
 
 ########################################
-# Configure Flathub
-########################################
-
-echo
-echo "========================================"
-echo "Configuring Flathub"
-echo "========================================"
-
-flatpak remote-add --if-not-exists --system \
-    flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
-
-########################################
 # Find Fedora Flatpaks
 ########################################
 
@@ -69,68 +56,33 @@ apps="$(
 )"
 
 if [[ -z "$apps" ]]; then
-
     echo "No Fedora Flatpak applications found."
-
 else
-
     echo "Fedora Flatpaks to migrate:"
     echo "$apps"
+fi
+
+
+########################################
+# Remove ALL Fedora Flatpaks
+########################################
+
+if [[ -n "$apps" ]]; then
+
     echo
-
-
-    ########################################
-    # Migrate Fedora Flatpaks to Flathub
-    ########################################
+    echo "========================================"
+    echo "Removing Fedora Flatpaks"
+    echo "========================================"
 
     while IFS= read -r app; do
         [[ -z "$app" ]] && continue
 
-        echo
-        echo "========================================"
-        echo "Migrating: $app"
-        echo "========================================"
+        echo "Removing: $app"
 
-        ####################################
-        # Check whether Flathub provides it
-        ####################################
-
-        if ! flatpak remote-info --system flathub "$app" >/dev/null 2>&1; then
-            echo "WARNING: $app is not available on Flathub."
-            echo "Keeping Fedora version."
-            continue
-        fi
-
-        ####################################
-        # Install Flathub version
-        ####################################
-
-        echo "Installing Flathub version..."
-
-        if flatpak install --system -y flathub "$app"; then
-
-            echo "Successfully migrated $app to Flathub."
-
-        else
-
-            echo "Normal installation failed."
-            echo "Attempting migration with downgrade allowed..."
-
-            if flatpak install --system -y \
-                --allow-downgrade \
-                flathub "$app"; then
-
-                echo "Successfully migrated $app to Flathub."
-
-            else
-
-                echo "WARNING: Failed to migrate $app."
-                echo "Keeping the existing Fedora version."
-                continue
-
-            fi
-
-        fi
+        flatpak uninstall \
+            --system \
+            -y \
+            "$app"
 
     done <<< "$apps"
 
@@ -146,31 +98,98 @@ echo "========================================"
 echo "Removing Fedora Flatpak remotes"
 echo "========================================"
 
-flatpak remote-delete -y --system fedora || true
-flatpak remote-delete -y --system fedora-testing || true
+flatpak remote-delete \
+    --system \
+    -y \
+    fedora \
+    || true
+
+flatpak remote-delete \
+    --system \
+    -y \
+    fedora-testing \
+    || true
 
 
 ########################################
-# Show current configuration
+# Verify Fedora remotes are gone
 ########################################
 
 echo
 echo "========================================"
-echo "Flatpak remotes"
+echo "Verifying Flatpak remotes"
 echo "========================================"
 
 flatpak remotes --system
 
 
+########################################
+# Configure Flathub
+########################################
+
 echo
 echo "========================================"
-echo "Installed system Flatpaks"
+echo "Configuring Flathub"
 echo "========================================"
 
-flatpak list \
+flatpak remote-add \
+    --if-not-exists \
     --system \
-    --app \
-    --columns=application,name,origin
+    flathub \
+    https://dl.flathub.org/repo/flathub.flatpakrepo
+
+
+########################################
+# Migrate Fedora Flatpaks to Flathub
+########################################
+
+if [[ -n "$apps" ]]; then
+
+    echo
+    echo "========================================"
+    echo "Installing Flathub Flatpaks"
+    echo "========================================"
+
+    while IFS= read -r app; do
+        [[ -z "$app" ]] && continue
+
+        echo
+        echo "========================================"
+        echo "Installing from Flathub: $app"
+        echo "========================================"
+
+        if flatpak install \
+            --system \
+            -y \
+            flathub \
+            "$app"; then
+
+            echo "Successfully installed $app from Flathub."
+
+        else
+
+            echo "Normal installation failed."
+            echo "Attempting downgrade if required..."
+
+            flatpak install \
+                --system \
+                -y \
+                --allow-downgrade \
+                flathub \
+                "$app"
+
+            echo "Successfully installed $app from Flathub."
+
+        fi
+
+    done <<< "$apps"
+
+else
+
+    echo
+    echo "No Fedora Flatpaks need migration."
+
+fi
 
 
 ########################################
@@ -186,13 +205,23 @@ flatpak preinstall -y
 
 
 ########################################
-# Show final installed Flatpaks
+# Show final configuration
 ########################################
 
 echo
 echo "========================================"
-echo "Final installed Flatpaks"
+echo "Final Flatpak configuration"
 echo "========================================"
+
+echo
+echo "Remotes:"
+echo "========"
+
+flatpak remotes --system
+
+echo
+echo "Installed system Flatpaks:"
+echo "=========================="
 
 flatpak list \
     --system \
