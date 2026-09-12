@@ -1,0 +1,11 @@
+{
+  "name": "ASDB Brightness Keys",
+  "description": "Use the keyboard brightness keys to control an Apple Studio Display with asdbctl and show the GNOME brightness OSD.",
+  "uuid": "ASDB-Brightness-Keys@therivernix",
+  "version": 14,
+  "shell-version": [
+    "48",
+    "49",
+    "50"
+  ]
+}
