@@ -16,6 +16,8 @@ unmaximize=['<Super>Down']
 maximize=['<Super>Up']
 move-to-side-w=['<Super>Left']
 move-to-side-e=['<Super>Right']
+switch-input-source=['<Control>space']
+switch-input-source-backward=['<Control>space']
 
 move-to-monitor-down=['<Super><Shift>Down']
 move-to-monitor-left=['<Super><Shift>Left']
@@ -45,3 +47,4 @@ switch-to-workspace-right=['<Control><Super>Right']
 switch-to-workspace-last=['<Control>0']
 
 toggle-fullscreen=['<Super>f']
+
