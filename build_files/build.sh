@@ -42,6 +42,7 @@ rm -rf /usr/share/gnome-shell/extensions/apps-menu@gnome-shell-extensions.gcampa
 rm -rf /usr/share/gnome-shell/extensions/launch-new-instance@gnome-shell-extensions.gcampax.github.com
 rm -rf /usr/share/gnome-shell/extensions/places-menu@gnome-shell-extensions.gcampax.github.com
 rm -rf /usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/background-logo@fedorahosted.org
 
 
 ### Compile GSettings schemas for GNOME extensions
