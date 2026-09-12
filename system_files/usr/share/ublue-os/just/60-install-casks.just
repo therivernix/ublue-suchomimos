@@ -9,3 +9,7 @@ spino-install-framework-tool:
     brew trust ublue-os/tap
     brew tap ublue-os/tap
     brew install --cask framework-tool
+    
+spino-install-docker
+    #!/usr/bin/env bash
+    brew install docker docker-compose
