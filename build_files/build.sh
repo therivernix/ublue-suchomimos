@@ -19,7 +19,8 @@ dnf5 install -y \
     firefox \
     firefox-langpacks \
     yelp \
-    gum
+    gum \
+    xdg-terminal-exec
 
 # Disable RPM-OSTree package management support in GNOME Software
 #
