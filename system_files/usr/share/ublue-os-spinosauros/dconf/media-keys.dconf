@@ -1,0 +1,75 @@
+[/]
+control-center=['AudioMedia']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom10/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom11/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom12/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom13/']
+media-static=['gnome-control-center']
+www=['<Shift><Super>Return']
+
+[custom-keybindings/custom0]
+binding='<Super>Return'
+command='xdg-terminal-exec'
+name='Terminal'
+
+[custom-keybindings/custom1]
+binding='<Control><Alt>Return'
+command='xdg-terminal-exec'
+name='Terminal Alt'
+
+[custom-keybindings/custom10]
+binding='<Super>u'
+command='xdg-terminal-exec ujust update'
+name='Update'
+
+[custom-keybindings/custom11]
+binding='<Shift><Super>p'
+command='firefox --private-window'
+name='Firefox Private Window'
+
+[custom-keybindings/custom12]
+binding='<Super>b'
+command='firefox'
+name='Firefox'
+
+[custom-keybindings/custom13]
+binding='<Control><Alt><Super>s'
+command='systemctl suspend'
+name='Sleep'
+
+[custom-keybindings/custom2]
+binding='<Control><Shift>Escape'
+command='flatpak run io.missioncenter.MissionCenter'
+name='mission-center'
+
+[custom-keybindings/custom3]
+binding='<Control><Alt>BackSpace'
+command='flatpak run com.jeffser.Alpaca'
+name='Launch Alpaca'
+
+[custom-keybindings/custom4]
+binding='<Super>i'
+command='gnome-control-center'
+name='Settings'
+
+[custom-keybindings/custom5]
+binding='<Control><Alt>space'
+command='flatpak run it.mijorus.smile'
+name='Open up the emoji picker'
+
+[custom-keybindings/custom6]
+binding='<Super>period'
+command='flatpak run it.mijorus.smile'
+name='Open up the emoji picker (Alt)'
+
+[custom-keybindings/custom7]
+binding='<Super>Return'
+command='xdg-terminal-exec'
+name='Terminal Super'
+
+[custom-keybindings/custom8]
+binding='<Super>k'
+command='gnome-control-center keyboard'
+name='Keyboard Shortcuts'
+
+[custom-keybindings/custom9]
+binding='<Super>s'
+command='/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=signal-desktop --file-forwarding org.signal.Signal @@u %U @@'
+name='Signal'
