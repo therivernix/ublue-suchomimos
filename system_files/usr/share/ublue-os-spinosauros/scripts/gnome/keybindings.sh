@@ -11,8 +11,8 @@ mkdir -p "$(dirname "$SENTINEL")"
 
 touch "$SENTINEL"
 
-dconf load /org/gnome/shell/extensions/ < /usr/share/ublue-os-spinosauros/dconf/media-keys.dconf
-dconf load /org/gnome/shell/extensions/ < /usr/share/ublue-os-spinosauros/dconf/wm-keybindings.dconf
+dconf load /org/gnome/settings-daemon/plugins/media-keys/ < /usr/share/ublue-os-spinosauros/dconf/media-keys.dconf
+dconf load /org/gnome/desktop/wm/keybindings/ < /usr/share/ublue-os-spinosauros/dconf/wm-keybindings.dconf
 
 extensions=(
   "appindicatorsupport@rgcjonas.gmail.com"
