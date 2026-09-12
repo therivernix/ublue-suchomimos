@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Configure Extensions
-Exec=/usr/share/ublue-os-spinosauros/scripts/flatpaks/removeFlatpaks.sh
+Exec=/usr/share/ublue-os-spinosauros/scripts/gnome/keybindings.sh
 OnlyShowIn=GNOME;
 NoDisplay=true
 X-GNOME-Autostart-enabled=true
