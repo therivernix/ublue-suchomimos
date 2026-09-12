@@ -18,7 +18,8 @@ cp -avf "/ctx/system_files"/. /
 dnf5 install -y \
     firefox \
     firefox-langpacks \
-    yelp
+    yelp \
+    gum
 
 # Disable RPM-OSTree package management support in GNOME Software
 #
