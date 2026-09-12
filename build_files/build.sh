@@ -58,3 +58,5 @@ dconf update
 ### Example for enabling a System Unit File\
 systemctl enable podman.socket
 systemctl enable flatpak-nuke-fedora.service
+systemctl enable flatpak-preinstall.service
+systemctl enable flatpak-system-helper.service
