@@ -15,11 +15,12 @@ mkdir -p "$(dirname "$SENTINEL")"
 
 
 ########################################
+# Phase 1
 # Remove unwanted Flatpaks
 ########################################
 
 echo "========================================"
-echo "Removing unwanted Flatpaks"
+echo "Phase 1: Removing unwanted Flatpaks"
 echo "========================================"
 
 flatpak uninstall -y --system \
@@ -37,14 +38,18 @@ flatpak uninstall -y --system \
     org.gnome.Weather \
     || true
 
+echo
+echo "Phase 1 completed successfully."
+
 
 ########################################
+# Phase 2
 # Find Fedora Flatpaks
 ########################################
 
 echo
 echo "========================================"
-echo "Finding Fedora Flatpaks"
+echo "Phase 2: Finding Fedora Flatpaks"
 echo "========================================"
 
 apps="$(
@@ -62,17 +67,21 @@ else
     echo "$apps"
 fi
 
+echo
+echo "Phase 2 completed successfully."
+
 
 ########################################
+# Phase 3
 # Remove ALL Fedora Flatpaks
 ########################################
 
-if [[ -n "$apps" ]]; then
+echo
+echo "========================================"
+echo "Phase 3: Removing Fedora Flatpaks"
+echo "========================================"
 
-    echo
-    echo "========================================"
-    echo "Removing Fedora Flatpaks"
-    echo "========================================"
+if [[ -n "$apps" ]]; then
 
     while IFS= read -r app; do
         [[ -z "$app" ]] && continue
@@ -86,16 +95,42 @@ if [[ -n "$apps" ]]; then
 
     done <<< "$apps"
 
+else
+
+    echo "Nothing to remove."
+
 fi
+
+echo
+echo "Verifying no Fedora Flatpaks remain..."
+
+remaining_fedora_apps="$(
+    flatpak list \
+        --system \
+        --app \
+        --columns=application,origin |
+    awk '$2 == "fedora" || $2 == "fedora-testing" {print $1}'
+)"
+
+if [[ -n "$remaining_fedora_apps" ]]; then
+    echo "ERROR: Fedora Flatpaks are still installed:"
+    echo "$remaining_fedora_apps"
+    exit 1
+fi
+
+echo "No Fedora Flatpaks remain."
+echo
+echo "Phase 3 completed successfully."
 
 
 ########################################
-# Remove Fedora Flatpak remotes
+# Phase 4
+# Remove Fedora remotes
 ########################################
 
 echo
 echo "========================================"
-echo "Removing Fedora Flatpak remotes"
+echo "Phase 4: Removing Fedora remotes"
 echo "========================================"
 
 flatpak remote-delete \
@@ -116,20 +151,29 @@ flatpak remote-delete \
 ########################################
 
 echo
-echo "========================================"
-echo "Verifying Flatpak remotes"
-echo "========================================"
+echo "Verifying Fedora remotes are gone..."
 
-flatpak remotes --system
+if flatpak remotes --system | \
+    awk '{print $1}' | \
+    grep -Eq '^(fedora|fedora-testing)$'; then
+
+    echo "ERROR: Fedora Flatpak remote still exists."
+    exit 1
+fi
+
+echo "Fedora remotes successfully removed."
+echo
+echo "Phase 4 completed successfully."
 
 
 ########################################
+# Phase 5
 # Configure Flathub
 ########################################
 
 echo
 echo "========================================"
-echo "Configuring Flathub"
+echo "Phase 5: Configuring Flathub"
 echo "========================================"
 
 flatpak remote-add \
@@ -140,23 +184,41 @@ flatpak remote-add \
 
 
 ########################################
-# Migrate Fedora Flatpaks to Flathub
+# Verify Flathub exists
 ########################################
 
-if [[ -n "$apps" ]]; then
+if ! flatpak remotes --system | \
+    awk '{print $1}' | \
+    grep -qx 'flathub'; then
 
-    echo
-    echo "========================================"
-    echo "Installing Flathub Flatpaks"
-    echo "========================================"
+    echo "ERROR: Flathub remote was not added."
+    exit 1
+fi
+
+echo "Flathub remote successfully configured."
+echo
+echo "Phase 5 completed successfully."
+
+
+########################################
+# Phase 6
+# Install Fedora apps from Flathub
+########################################
+
+echo
+echo "========================================"
+echo "Phase 6: Installing Flathub Flatpaks"
+echo "========================================"
+
+if [[ -n "$apps" ]]; then
 
     while IFS= read -r app; do
         [[ -z "$app" ]] && continue
 
         echo
-        echo "========================================"
+        echo "----------------------------------------"
         echo "Installing from Flathub: $app"
-        echo "========================================"
+        echo "----------------------------------------"
 
         if flatpak install \
             --system \
@@ -186,26 +248,67 @@ if [[ -n "$apps" ]]; then
 
 else
 
-    echo
     echo "No Fedora Flatpaks need migration."
 
 fi
 
 
 ########################################
+# Verify every migrated app uses Flathub
+########################################
+
+echo
+echo "Verifying migrated Flatpaks..."
+
+if [[ -n "$apps" ]]; then
+
+    while IFS= read -r app; do
+        [[ -z "$app" ]] && continue
+
+        origin="$(
+            flatpak list \
+                --system \
+                --app \
+                --columns=application,origin |
+            awk -v app="$app" '$1 == app {print $2}'
+        )"
+
+        if [[ "$origin" != "flathub" ]]; then
+            echo "ERROR: $app is not installed from Flathub."
+            echo "Detected origin: ${origin:-unknown}"
+            exit 1
+        fi
+
+        echo "Verified: $app → flathub"
+
+    done <<< "$apps"
+
+fi
+
+echo
+echo "All migrated Flatpaks are confirmed to use Flathub."
+echo
+echo "Phase 6 completed successfully."
+
+
+########################################
+# Phase 7
 # Run Flatpak preinstall
 ########################################
 
 echo
 echo "========================================"
-echo "Installing additional Flatpaks"
+echo "Phase 7: Installing additional Flatpaks"
 echo "========================================"
 
 flatpak preinstall -y
 
+echo
+echo "Phase 7 completed successfully."
+
 
 ########################################
-# Show final configuration
+# Final configuration
 ########################################
 
 echo
