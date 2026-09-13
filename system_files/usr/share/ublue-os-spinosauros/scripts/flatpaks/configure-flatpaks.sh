@@ -1,3 +1,4 @@
+bash
 #!/usr/bin/env bash
 set -euo pipefail
 
@@ -14,6 +15,48 @@ if [[ -f "$SENTINEL" ]]; then
 fi
 
 mkdir -p "$(dirname "$SENTINEL")"
+
+########################################
+# Introduction
+########################################
+
+cat <<'EOF'
+
+============================================================
+        Spinosauros First-Run Configuration
+============================================================
+
+This is a first-run configuration script to configure
+applications.
+
+We will remove the Fedora Flatpak repositories and switch
+over to Flathub repositories.
+
+Additionally, we will remove any Flatpak that originally
+came with the system.
+
+You can install additional applications using ujust or
+Bazaar.
+
+============================================================
+
+EOF
+
+########################################
+# Ask for confirmation
+########################################
+
+read -r -p "Do you want to continue? [y/N]: " CONFIRM
+
+if [[ ! "$CONFIRM" =~ ^[Yy]$ ]]; then
+    echo
+    echo "Configuration cancelled."
+    exit 0
+fi
+
+echo
+echo "Starting Flatpak configuration..."
+echo
 
 ########################################
 # Remove Fedora Flatpak remotes
@@ -89,3 +132,7 @@ done
 ########################################
 
 touch "$SENTINEL"
+
+echo
+echo "Flatpak configuration completed successfully."
+echo
