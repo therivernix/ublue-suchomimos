@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Configure Flatpaks
+Exec=ptyxis -- bash -c '/usr/share/ublue-os-spinosauros/scripts/flatpaks/configure-flatpaks.sh; status=$?; echo; echo "Exit status: $status"; read -r -p "Press Enter to close..."'
+OnlyShowIn=GNOME;
+NoDisplay=true
+X-GNOME-Autostart-enabled=true

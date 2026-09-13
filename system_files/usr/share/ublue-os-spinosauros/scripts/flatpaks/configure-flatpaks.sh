@@ -3,6 +3,17 @@ set -euo pipefail
 
 FLATPAK="/usr/bin/flatpak"
 FLATHUB_URL="https://dl.flathub.org/repo/flathub.flatpakrepo"
+SENTINEL="$HOME/.local/state/spinosauros-flatpak-reset.done"
+
+########################################
+# Don't run more than once
+########################################
+
+if [[ -f "$SENTINEL" ]]; then
+    exit 0
+fi
+
+mkdir -p "$(dirname "$SENTINEL")"
 
 ########################################
 # Remove Fedora Flatpak remotes
@@ -72,3 +83,9 @@ done
     --user \
     flathub \
     "$FLATHUB_URL"
+
+########################################
+# Mark setup as completed
+########################################
+
+touch "$SENTINEL"
