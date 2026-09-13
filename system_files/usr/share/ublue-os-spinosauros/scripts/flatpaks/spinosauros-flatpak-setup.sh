@@ -1,4 +1,3 @@
-bash
 #!/usr/bin/env bash
 set -euo pipefail
 
@@ -19,49 +18,9 @@ mkdir -p "$(dirname "$SENTINEL")"
 # Check required commands
 ########################################
 
-if ! command -v gum >/dev/null 2>&1; then
-    echo "ERROR: gum is not installed."
-    exit 1
-fi
-
 if ! command -v flatpak >/dev/null 2>&1; then
     echo "ERROR: flatpak is not installed."
     exit 1
-fi
-
-
-########################################
-# Welcome / confirmation
-########################################
-
-clear
-
-echo
-echo "========================================"
-echo "       Spinosauros App Configuration"
-echo "========================================"
-echo
-echo "This will configure the default Flatpak"
-echo "applications on this system."
-echo
-echo "You can also use:"
-echo
-echo "    ujust spino-configure-apps"
-echo
-echo "to run this configuration in the future."
-echo
-
-choice="$(
-    gum choose \
-        --header "What would you like to do?" \
-        "Configure apps" \
-        "Cancel"
-)"
-
-if [[ "$choice" != "Configure apps" ]]; then
-    echo
-    echo "App configuration cancelled."
-    exit 0
 fi
 
 
@@ -142,6 +101,40 @@ FLATHUB_APPS=(
 
 
 ########################################
+# Confirmation
+########################################
+
+clear
+
+echo
+echo "========================================"
+echo "   Spinosauros App Configuration"
+echo "========================================"
+echo
+echo "This will configure the default Flatpak"
+echo "applications on this system."
+echo
+echo "You can also use:"
+echo
+echo "    ujust spino-configure-apps"
+echo
+echo "to run this configuration in the future."
+echo
+
+read -r -p "Configure apps? [y/N]: " answer
+
+case "$answer" in
+    y|Y|yes|YES|Yes)
+        ;;
+    *)
+        echo
+        echo "App configuration cancelled."
+        exit 0
+        ;;
+esac
+
+
+########################################
 # Phase 1
 # Remove unwanted Flatpaks
 ########################################
@@ -207,287 +200,4 @@ echo "Phase 2 completed successfully."
 echo
 echo "========================================"
 echo "Phase 3: Removing Fedora Flatpaks"
-echo "========================================"
-
-if [[ -n "$apps" ]]; then
-
-    while IFS= read -r app; do
-        [[ -z "$app" ]] && continue
-
-        echo "Removing: $app"
-
-        flatpak uninstall \
-            --system \
-            -y \
-            "$app"
-
-    done <<< "$apps"
-
-else
-
-    echo "Nothing to remove."
-
-fi
-
-
-########################################
-# Verify Fedora Flatpaks are gone
-########################################
-
-echo
-echo "Verifying no Fedora Flatpaks remain..."
-
-remaining_fedora_apps="$(
-    flatpak list \
-        --system \
-        --app \
-        --columns=application,origin |
-    awk '$2 == "fedora" || $2 == "fedora-testing" {print $1}'
-)"
-
-if [[ -n "$remaining_fedora_apps" ]]; then
-    echo "ERROR: Fedora Flatpaks are still installed:"
-    echo "$remaining_fedora_apps"
-    exit 1
-fi
-
-echo "No Fedora Flatpaks remain."
-echo
-echo "Phase 3 completed successfully."
-
-
-########################################
-# Phase 4
-# Remove Fedora remotes
-########################################
-
-echo
-echo "========================================"
-echo "Phase 4: Removing Fedora remotes"
-echo "========================================"
-
-if flatpak remotes --system | \
-    awk '{print $1}' | \
-    grep -qx 'fedora'; then
-
-    flatpak remote-delete \
-        --system \
-        --force \
-        fedora
-fi
-
-if flatpak remotes --system | \
-    awk '{print $1}' | \
-    grep -qx 'fedora-testing'; then
-
-    flatpak remote-delete \
-        --system \
-        --force \
-        fedora-testing
-fi
-
-
-########################################
-# Verify Fedora remotes are gone
-########################################
-
-echo
-echo "Verifying Fedora remotes are gone..."
-
-if flatpak remotes --system | \
-    awk '{print $1}' | \
-    grep -Eq '^(fedora|fedora-testing)$'; then
-
-    echo "ERROR: Fedora Flatpak remote still exists."
-    exit 1
-fi
-
-echo "Fedora remotes successfully removed."
-echo
-echo "Phase 4 completed successfully."
-
-
-########################################
-# Phase 5
-# Configure Flathub
-########################################
-
-echo
-echo "========================================"
-echo "Phase 5: Configuring Flathub"
-echo "========================================"
-
-flatpak remote-add \
-    --if-not-exists \
-    --system \
-    flathub \
-    https://dl.flathub.org/repo/flathub.flatpakrepo
-
-
-########################################
-# Verify Flathub exists
-########################################
-
-echo
-echo "Verifying Flathub remote..."
-
-if ! flatpak remotes --system | \
-    awk '{print $1}' | \
-    grep -qx 'flathub'; then
-
-    echo "ERROR: Flathub remote was not added."
-    exit 1
-fi
-
-echo "Flathub remote successfully configured."
-echo
-echo "Phase 5 completed successfully."
-
-
-########################################
-# Phase 6
-# Install default Flatpaks
-########################################
-
-echo
-echo "========================================"
-echo "Phase 6: Installing default Flatpaks"
-echo "========================================"
-
-echo
-echo "Installing ${#FLATHUB_APPS[@]} applications..."
-echo
-
-for app in "${FLATHUB_APPS[@]}"; do
-
-    echo
-    echo "----------------------------------------"
-    echo "Installing: $app"
-    echo "----------------------------------------"
-
-    ########################################
-    # Skip if already installed from
-    # Flathub
-    ########################################
-
-    if flatpak list \
-        --system \
-        --app \
-        --columns=application,origin |
-        awk -v app="$app" '$1 == app && $2 == "flathub" {found=1} END {exit !found}'
-    then
-        echo "$app is already installed from Flathub."
-        continue
-    fi
-
-    ########################################
-    # Verify application exists on Flathub
-    ########################################
-
-    if ! flatpak remote-info \
-        --system \
-        flathub \
-        "$app" >/dev/null 2>&1; then
-
-        echo "ERROR: $app is not available on Flathub."
-        exit 1
-    fi
-
-    ########################################
-    # Install application
-    ########################################
-
-    flatpak install \
-        --system \
-        --allow-downgrade \
-        -y \
-        flathub \
-        "$app"
-
-    echo "Successfully installed $app."
-
-done
-
-echo
-echo "Phase 6 completed successfully."
-
-
-########################################
-# Phase 7
-# Verify Flatpak origins
-########################################
-
-echo
-echo "========================================"
-echo "Phase 7: Verifying Flatpak origins"
-echo "========================================"
-
-for app in "${FLATHUB_APPS[@]}"; do
-
-    origin="$(
-        flatpak list \
-            --system \
-            --app \
-            --columns=application,origin |
-        awk -v app="$app" '$1 == app {print $2}'
-    )"
-
-    if [[ "$origin" != "flathub" ]]; then
-        echo "ERROR: $app is not installed from Flathub."
-        echo "Detected origin: ${origin:-unknown}"
-        exit 1
-    fi
-
-    echo "Verified: $app -> flathub"
-
-done
-
-echo
-echo "All default Flatpaks are confirmed to use Flathub."
-echo
-echo "Phase 7 completed successfully."
-
-
-########################################
-# Final configuration
-########################################
-
-echo
-echo "========================================"
-echo "Final Flatpak configuration"
-echo "========================================"
-
-echo
-echo "Remotes:"
-echo "========"
-
-flatpak remotes --system
-
-echo
-echo "Installed system Flatpaks:"
-echo "=========================="
-
-flatpak list \
-    --system \
-    --app \
-    --columns=application,name,origin
-
-
-########################################
-# Mark complete
-########################################
-
-# Only create the sentinel after EVERYTHING
-# succeeded.
-
-touch "$SENTINEL"
-
-echo
-echo "========================================"
-echo "Flatpak setup completed successfully."
-echo "========================================"
-echo
-echo "You can run the configuration again with:"
-echo
-echo "    ujust spino-configure-apps"
-echo
+echo "=======
