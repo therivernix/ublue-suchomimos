@@ -9,6 +9,17 @@ FLATHUB_URL="https://dl.flathub.org/repo/flathub.flatpakrepo"
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 FLATPAKS_FILE="${SCRIPT_DIR}/flatpaks.txt"
 
+# Sentinel file
+SENTINEL="$HOME/.local/state/spinosauros-flatpakconfig.done"
+
+########################################
+# Exit if already configured
+########################################
+
+if [[ -f "$SENTINEL" ]]; then
+    exit 0
+fi
+
 ########################################
 # Remove Fedora Flatpak remotes
 ########################################
@@ -99,3 +110,12 @@ while IFS= read -r app; do
         flathub \
         "$app"
 done < "$FLATPAKS_FILE"
+
+########################################
+# Create sentinel
+########################################
+
+mkdir -p "$(dirname "$SENTINEL")"
+touch "$SENTINEL"
+
+echo "Flatpak configuration completed."
