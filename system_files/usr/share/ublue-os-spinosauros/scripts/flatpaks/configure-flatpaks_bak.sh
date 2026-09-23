@@ -1,13 +1,8 @@
-bash
 #!/usr/bin/env bash
 set -euo pipefail
 
 FLATPAK="/usr/bin/flatpak"
 FLATHUB_URL="https://dl.flathub.org/repo/flathub.flatpakrepo"
-
-# flatpaks.txt is expected to be next to this script
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-FLATPAKS_FILE="${SCRIPT_DIR}/flatpaks.txt"
 
 ########################################
 # Remove Fedora Flatpak remotes
@@ -77,25 +72,3 @@ done
     --user \
     flathub \
     "$FLATHUB_URL"
-
-########################################
-# Install system Flatpak applications
-########################################
-
-if [[ ! -f "$FLATPAKS_FILE" ]]; then
-    echo "ERROR: Flatpak list not found: $FLATPAKS_FILE" >&2
-    exit 1
-fi
-
-while IFS= read -r app; do
-    # Ignore empty lines and comments
-    [[ -z "$app" || "$app" == \#* ]] && continue
-
-    echo "Installing $app..."
-
-    "$FLATPAK" install \
-        --system \
-        -y \
-        flathub \
-        "$app"
-done < "$FLATPAKS_FILE"
