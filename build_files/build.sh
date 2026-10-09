@@ -48,7 +48,8 @@ dnf5 install -y \
 # This is the same approach used by Universal Blue for Silverblue-based
 # images. Since this image is based on silverblue-main, remove it directly.
 dnf5 remove -y \
-    gnome-software
+    gnome-software \
+    gnome-extensions-app
 
 ### Configure Flatpak remotes
 flatpak remote-delete --system fedora || true
