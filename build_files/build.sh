@@ -66,6 +66,11 @@ flatpak remote-add --if-not-exists --system \
 #
 # dnf5 -y copr disable ublue-os/staging
 
+# Install GNOME Rounded Blur
+dnf5 -y copr enable ublue-os/packages
+dnf5 install -y gnome-rounded-blur
+dnf5 -y copr disable ublue-os/packages
+
 # Installing Gnome Extensions
 /usr/share/ublue-os-spinosauros/scripts/gnome-extensions/install-gnome-extensions.sh
 
