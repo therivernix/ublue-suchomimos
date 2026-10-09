@@ -15,6 +15,7 @@ rm -rf /usr/share/gnome-shell/extensions/logomenu@aryan_k
 rm -rf /usr/share/gnome-shell/extensions/tiling-assistant@leleat-on-github
 #rm -rf /usr/share/gnome-shell/extensions/blur-my-shell@aunetx
 #rm -rf /usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
+rm -rf /usr/share/gnome-shell/extensions/background-logo@fedorahosting.org
 
 # Copy the contents of system_files/ of the git repo to /
 cp -avf "/ctx/system_files"/. /
