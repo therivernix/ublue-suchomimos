@@ -1,7 +1,20 @@
-bash
 #!/bin/bash
 
 set -ouex pipefail
+
+#Removing bluefin keybindings so I can override them
+rm -f /etc/dconf/db/distro.d/02-bluefin-keybindings
+
+# Removing built-in extensions
+rm -rf /usr/share/gnome-shell/extensions/search-light@icedman.github.com
+rm -rf /usr/share/gnome-shell/extensions/apps-menu@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/launch-new-instance@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/places-menu@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com
+rm -rf /usr/share/gnome-shell/extensions/logomenu@aryan_k
+rm -rf /usr/share/gnome-shell/extensions/tiling-assistant@leleat-on-github
+#rm -rf /usr/share/gnome-shell/extensions/blur-my-shell@aunetx
+#rm -rf /usr/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
 
 # Copy the contents of system_files/ of the git repo to /
 cp -avf "/ctx/system_files"/. /
@@ -18,8 +31,16 @@ cp -avf "/ctx/system_files"/. /
 dnf5 install -y \
     firefox \
     firefox-langpacks \
-    yelp \
     gum \
+    yelp \
+    curl \
+    jq \
+    unzip \
+    git \
+    make \
+    gettext \
+    meson \
+    glib2-devel \
     xdg-terminal-exec
 
 # Disable RPM-OSTree package management support in GNOME Software
@@ -45,16 +66,10 @@ flatpak remote-add --if-not-exists --system \
 #
 # dnf5 -y copr disable ublue-os/staging
 
+# Installing Gnome Extensions
+/usr/share/ublue-os-spinosauros/scripts/gnome-extensions/install-gnome-extensions.sh
 
-### Removing built-in GNOME Shell extensions
-rm -rf /usr/share/gnome-shell/extensions/apps-menu@gnome-shell-extensions.gcampax.github.com
-rm -rf /usr/share/gnome-shell/extensions/launch-new-instance@gnome-shell-extensions.gcampax.github.com
-rm -rf /usr/share/gnome-shell/extensions/places-menu@gnome-shell-extensions.gcampax.github.com
-rm -rf /usr/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com
-rm -rf /usr/share/gnome-shell/extensions/background-logo@fedorahosted.org
-
-
-### Compile GSettings schemas for GNOME extensions
+# Compile GSettings schemas for GNOME extensions
 find /usr/share/gnome-shell/extensions -type d -name schemas \
     -exec glib-compile-schemas {} \;
 
