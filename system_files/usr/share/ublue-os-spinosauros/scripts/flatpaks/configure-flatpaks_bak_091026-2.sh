@@ -5,9 +5,9 @@ set -euo pipefail
 # Spinosauros | Flatpak Configuration
 # =============================================================================
 # Removes existing Flatpak applications, configures Flathub, and installs
-# applications defined in flatpaks.txt.
+# the applications defined in flatpaks.txt.
 #
-# Runs once per user. After completion, disables the GNOME autostart entry.
+# This script runs only once per user, using a sentinel file.
 # =============================================================================
 
 # -----------------------------------------------------------------------------
@@ -19,11 +19,7 @@ readonly FLATHUB_URL="https://dl.flathub.org/repo/flathub.flatpakrepo"
 
 readonly SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 readonly FLATPAKS_FILE="${SCRIPT_DIR}/flatpaks.txt"
-
 readonly SENTINEL="${HOME}/.local/state/spinosauros-flatpakconfig.done"
-
-readonly AUTOSTART_FILE="configureflatpaks.desktop"
-readonly AUTOSTART_OVERRIDE="${HOME}/.config/autostart/${AUTOSTART_FILE}"
 
 # -----------------------------------------------------------------------------
 # Output helpers
@@ -60,29 +56,12 @@ section() {
 }
 
 # -----------------------------------------------------------------------------
-# Disable GNOME autostart for the current user
-# -----------------------------------------------------------------------------
-
-disable_autostart() {
-    mkdir -p "$(dirname "$AUTOSTART_OVERRIDE")"
-
-    cat > "$AUTOSTART_OVERRIDE" <<'EOF'
-[Desktop Entry]
-Type=Application
-Hidden=true
-EOF
-
-    success "GNOME autostart disabled: $AUTOSTART_FILE"
-}
-
-# -----------------------------------------------------------------------------
 # Preflight checks
 # -----------------------------------------------------------------------------
 
 preflight() {
-    # Existing completed installations only need their autostart disabled.
     if [[ -f "$SENTINEL" ]]; then
-        disable_autostart
+        success "Flatpak configuration already completed."
         exit 0
     fi
 
@@ -186,10 +165,8 @@ install_applications() {
     local count=0
 
     while IFS= read -r app || [[ -n "$app" ]]; do
-        # Handle Windows line endings.
+        # Ignore comments, blank lines, and Windows line endings.
         app="${app%$'\r'}"
-
-        # Skip blank lines and comments.
         [[ -z "${app//[[:space:]]/}" || "$app" =~ ^[[:space:]]*# ]] && continue
 
         info "Installing: $app"
@@ -220,23 +197,6 @@ create_sentinel() {
 }
 
 # -----------------------------------------------------------------------------
-# Error handling
-# -----------------------------------------------------------------------------
-
-on_error() {
-    local exit_code=$?
-    local line_number="$1"
-
-    error "Configuration failed at line ${line_number}."
-    error "Exit code: ${exit_code}"
-    error "Setup will retry on the next login."
-
-    exit "$exit_code"
-}
-
-trap 'on_error "$LINENO"' ERR
-
-# -----------------------------------------------------------------------------
 # Main
 # -----------------------------------------------------------------------------
 
@@ -261,12 +221,7 @@ main() {
     configure_flathub user
 
     install_applications
-
-    # Mark configuration as successfully completed.
     create_sentinel
-
-    # Disable future GNOME autostart launches.
-    disable_autostart
 
     section "Flatpak configuration complete"
     success "Spinosauros Flatpak setup finished successfully."
