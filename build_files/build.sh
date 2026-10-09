@@ -42,7 +42,8 @@ dnf5 install -y \
     gettext \
     meson \
     glib2-devel \
-    xdg-terminal-exec
+    xdg-terminal-exec \
+    sassc
 
 ### Configure Flatpak remotes
 flatpak remote-delete --system fedora || true
@@ -83,7 +84,8 @@ dnf5 remove -y \
     gnome-software \
     gnome-extensions-app \
     htop \
-    nvtop
+    nvtop \
+    sassc
 
 ### Example for enabling a System Unit File\
 systemctl enable podman.socket
