@@ -43,16 +43,6 @@ dnf5 install -y \
     glib2-devel \
     xdg-terminal-exec
 
-# Disable RPM-OSTree package management support in GNOME Software
-#
-# This is the same approach used by Universal Blue for Silverblue-based
-# images. Since this image is based on silverblue-main, remove it directly.
-dnf5 remove -y \
-    gnome-software \
-    gnome-extensions-app \
-    htop \
-    nvtop
-
 ### Configure Flatpak remotes
 flatpak remote-delete --system fedora || true
 flatpak remote-delete --system fedora-testing || true
@@ -84,6 +74,15 @@ find /usr/share/gnome-shell/extensions -type d -name schemas \
 ### Reloading dconf to ingest settings and apply kb shortcuts
 # Compile dconf databases
 dconf update
+
+# Disable RPM-OSTree package management support in GNOME Software
+# This is the same approach used by Universal Blue for Silverblue-based
+# images. Since this image is based on silverblue-main, remove it directly.
+dnf5 remove -y \
+    gnome-software \
+    gnome-extensions-app \
+    htop \
+    nvtop
 
 ### Example for enabling a System Unit File\
 systemctl enable podman.socket
