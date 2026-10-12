@@ -4,6 +4,7 @@
 #
 # Strategy:
 #   * Prefer ready-made upstream GitHub release ZIPs where available.
+#   * Fall back to a matching extensions.gnome.org ZIP for the installed Shell.
 #   * Fall back to a directly-installable current upstream source tree.
 #   * Use project-specific build/staging logic where the project requires it.
 #   * Validate UUID and GNOME Shell compatibility before installing.
@@ -226,6 +227,57 @@ github_api() {
 }
 
 
+# Retrieve a prebuilt, shell-version-specific ZIP from extensions.gnome.org.
+# This is particularly important when upstream's latest GitHub release already
+# targets the next GNOME Shell version (e.g. QSAP v106 for GNOME 51).
+try_ego_release() {
+    local uuid="$1"
+    local tmpdir="$2"
+    local info download_url version zip_url rc
+
+    log "Checking extensions.gnome.org for $uuid on GNOME $SHELL_VERSION"
+
+    if ! info="$(curl --fail --silent --show-error --location --get \
+        --data-urlencode "uuid=$uuid" \
+        --data-urlencode "shell_version=$SHELL_VERSION" \
+        'https://extensions.gnome.org/extension-info/' 2>/dev/null)"; then
+        warn "Could not query extensions.gnome.org for $uuid"
+        return 1
+    fi
+
+    if ! download_url="$(jq -er '.download_url | select(type == "string" and length > 0)' <<<"$info" 2>/dev/null)"; then
+        log "No GNOME $SHELL_VERSION package listed on extensions.gnome.org for $uuid"
+        return 1
+    fi
+
+    version="$(jq -r '.version // "unknown"' <<<"$info")"
+
+    # Only trust ZIP download URLs on the official extensions.gnome.org host.
+    case "$download_url" in
+        /*) zip_url="https://extensions.gnome.org${download_url}" ;;
+        https://extensions.gnome.org/*) zip_url="$download_url" ;;
+        *) warn "Unexpected extension download URL for $uuid: $download_url"; return 1 ;;
+    esac
+
+    log "Trying extensions.gnome.org version $version for GNOME $SHELL_VERSION"
+    if ! curl --fail --silent --show-error --location \
+        "$zip_url" -o "$tmpdir/ego.zip"; then
+        warn "Could not download extensions.gnome.org version $version for $uuid"
+        return 1
+    fi
+
+    # try_zip checks UUID, installable payload, and GNOME Shell compatibility.
+    if try_zip "$uuid" "$tmpdir/ego.zip" "$tmpdir"; then
+        log "Selected extensions.gnome.org version $version for $uuid"
+        return 0
+    else
+        rc=$?
+        warn "extensions.gnome.org version $version for $uuid did not validate (code $rc)"
+        return 1
+    fi
+}
+
+
 install_release_or_source() {
     local uuid="$1"
     local repo="$2"
@@ -272,6 +324,13 @@ install_release_or_source() {
                 | @tsv
             ' <<<"$release_json"
         )
+    fi
+
+    # Prefer the GNOME-version-specific official package to an incompatible
+    # default-branch source checkout. No npm/TypeScript compilation is needed.
+    if try_ego_release "$uuid" "$tmpdir"; then
+        rm -rf "$tmpdir"
+        return 0
     fi
 
     branch="$(github_api "${GITHUB_API}/repos/${repo}" | jq -er '.default_branch')"
